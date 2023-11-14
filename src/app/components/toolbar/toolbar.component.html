@@ -1,0 +1,64 @@
+<mat-toolbar color="primary">
+
+    <div #menu>
+        <button mat-button routerLink="profile">
+            <mat-icon>account_circle</mat-icon>
+            profile
+        </button>
+        
+    </div>
+    <div class="menu-title">
+        <!--<button mat-icon-button *ngIf="getAuthenticated()" >
+            <mat-icon>menu</mat-icon>
+        </button>-->
+        <p>Ecommerce Shopping Assistant</p>
+    </div>
+    
+    <ng-container *ngIf="!getAuthenticated(); else logoutBlock;">
+        <button mat-button routerLink="login">
+            <mat-icon>login</mat-icon>
+            login
+        </button>
+    </ng-container>
+    <ng-template #logoutBlock>
+        <div>
+            <button mat-button routerLink="profile">
+                <mat-icon>shopping_cart</mat-icon>
+                cart
+            </button>
+            <button mat-button routerLink="login" (click)="logout()">
+                <mat-icon>logout</mat-icon>
+                logout
+            </button>
+        </div>
+    </ng-template>
+
+</mat-toolbar>
+<mat-toolbar color="primary">
+    <mat-form-field appearance="fill" style="margin: auto; width: 60%;">
+        <mat-label>Search...</mat-label>
+        <input matInput >
+      </mat-form-field>
+  </mat-toolbar>
+<router-outlet></router-outlet>
+<!--<mat-drawer-container>
+    <mat-drawer #drawer [opened]="getAuthenticated()" mode="side">
+        <mat-nav-list class="nav-items-container">
+            <div>
+                <mat-list-item routerLink="home">
+                    <button mat-button><mat-icon>home</mat-icon>home</button>
+                </mat-list-item>
+                <mat-list-item routerLink="all-tasks">
+                    <button mat-button><mat-icon>assignment</mat-icon>Shop</button>
+                </mat-list-item>
+              
+            </div>
+
+
+        </mat-nav-list>
+
+    </mat-drawer>
+    <mat-drawer-content>
+        
+    </mat-drawer-content>
+</mat-drawer-container>-->

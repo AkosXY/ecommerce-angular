@@ -1,10 +1,10 @@
 <div class="card-container" >
-    <mat-card class="custom-card"  >
+    <mat-card class="custom-card"  (click)="openDetailDialog(product)">
         <mat-card-content matRipple>
             <p>{{product?.title}}</p>
             <p>{{product?.brand}}</p>
             <p>{{product?.price}}</p>
-            <button mat-button routerLink="login">
+            <button mat-raised-button (click)="handleButtonClick($event, product)">
                 <mat-icon>shopping_cart</mat-icon>
                 buy
             </button>

@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProductGridComponent } from './product-grid.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { SharedMaterialModule } from 'src/app/shared/shared.material.module';
+import { ProductDetailDialogComponent } from './product-detail-dialog/product-detail-dialog.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     ProductGridComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    ProductDetailDialogComponent
   ],
   imports: [
     CommonModule,

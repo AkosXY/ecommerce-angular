@@ -2,27 +2,29 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { Routes, RouterModule } from '@angular/router';
-import { ProductGridComponent } from './product-grid.component';
-import { ProductCardComponent } from './product-card/product-card.component';
+import { CartComponent } from './cart.component';
 import { SharedMaterialModule } from 'src/app/shared/shared.material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 const routes: Routes = [
   {
     path: '',
-    component: ProductGridComponent
+    component: CartComponent
   }
 ];
 
 
 @NgModule({
   declarations: [
-    ProductGridComponent,
-    ProductCardComponent
+    CartComponent
   ],
   imports: [
     CommonModule,
     SharedMaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
 
     RouterModule.forChild(routes),
 
@@ -30,4 +32,4 @@ const routes: Routes = [
   exports: [RouterModule]
 
 })
-export class ProductGridModule { }
+export class CartModule { }

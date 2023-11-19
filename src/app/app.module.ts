@@ -21,7 +21,7 @@ import { SharedMaterialModule } from './shared/shared.material.module';
   declarations: [
     AppComponent,
     ToolbarComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

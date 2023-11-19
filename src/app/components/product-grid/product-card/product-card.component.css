@@ -1,13 +1,8 @@
-
 .card-container {
     margin: 20px;
 }
 
-
-
-
-/* mat-card {
-    width: calc(100% - 20px);
-    height: calc(100% - 20px);
-
-  } */
+.custom-card:hover {
+    cursor: pointer;
+    background-color: rgb(245, 245, 245)
+}

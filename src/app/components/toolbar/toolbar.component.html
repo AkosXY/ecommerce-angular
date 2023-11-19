@@ -1,47 +1,49 @@
 <mat-toolbar color="primary">
 
-    <div #menu>
-        <button mat-button routerLink="profile">
-            <mat-icon>account_circle</mat-icon>
-            profile
-        </button>
-        
-    </div>
+
     <div class="menu-title">
-        <!--<button mat-icon-button *ngIf="getAuthenticated()" >
-            <mat-icon>menu</mat-icon>
-        </button>-->
-        <p>Ecommerce Shopping Assistant</p>
+       
+        <button mat-button routerLink="login" routerLink="all-tasks">
+            <mat-icon>shopping-bag</mat-icon>
+            <h1>Ecommerce</h1>
+        </button>
+    </div>
+
+    <div class="button-container">
+        <button mat-button routerLink="profile">
+            <mat-icon>shopping_cart</mat-icon>
+            cart
+        </button>
+        <ng-container *ngIf="!getAuthenticated(); else logoutBlock;">
+            <button mat-button routerLink="login">
+                <mat-icon>login</mat-icon>
+                login
+            </button>
+        </ng-container>
+        <ng-template #logoutBlock>
+            <button mat-button routerLink="profile">
+                <mat-icon>account_circle</mat-icon>
+                profile
+            </button>
+                <button mat-button routerLink="login" (click)="logout()">
+                    <mat-icon>logout</mat-icon>
+                    logout
+                </button>
+        </ng-template>
     </div>
     
-    <ng-container *ngIf="!getAuthenticated(); else logoutBlock;">
-        <button mat-button routerLink="login">
-            <mat-icon>login</mat-icon>
-            login
-        </button>
-    </ng-container>
-    <ng-template #logoutBlock>
-        <div>
-            <button mat-button routerLink="profile">
-                <mat-icon>shopping_cart</mat-icon>
-                cart
-            </button>
-            <button mat-button routerLink="login" (click)="logout()">
-                <mat-icon>logout</mat-icon>
-                logout
-            </button>
-        </div>
-    </ng-template>
-
 </mat-toolbar>
-<mat-toolbar color="primary">
-    <mat-form-field appearance="fill" style="margin: auto; width: 60%;">
+<div class="search-container">
+    <mat-form-field style="margin: auto; width: 30%;" >
         <mat-label>Search...</mat-label>
-        <input matInput >
-      </mat-form-field>
-  </mat-toolbar>
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput placeholder="search" >
+    </mat-form-field>
+</div>
+
+
 <router-outlet></router-outlet>
-<!--<mat-drawer-container>
+<!-- <mat-drawer-container>
     <mat-drawer #drawer [opened]="getAuthenticated()" mode="side">
         <mat-nav-list class="nav-items-container">
             <div>
@@ -61,4 +63,4 @@
     <mat-drawer-content>
         
     </mat-drawer-content>
-</mat-drawer-container>-->
+</mat-drawer-container> -->

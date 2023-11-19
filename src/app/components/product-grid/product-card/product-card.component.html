@@ -1,0 +1,15 @@
+<div class="card-container">
+    <mat-card class="custom_card">
+        <mat-card-content>
+            <p>{{product?.title}}</p>
+            <p>{{product?.brand}}</p>
+            <p>{{product?.price}}</p>
+            <button mat-button routerLink="login">
+                <mat-icon>shopping_cart</mat-icon>
+                buy
+            </button>
+        </mat-card-content>
+    </mat-card>
+    
+    <h1 *ngIf="!product">No Product Available</h1>
+</div>

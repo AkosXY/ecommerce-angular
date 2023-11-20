@@ -1,0 +1,16 @@
+<div class="search-container">
+  <mat-form-field style="margin: auto; width: 30%;" >
+      <mat-label>Search...</mat-label>
+      <mat-icon matPrefix>search</mat-icon>
+      <input matInput placeholder="search" >
+  </mat-form-field>
+</div>
+
+<div class="list-container">
+    <mat-grid-list cols="5" rowHeight="1.8:1" gutterSize="20px" >
+        <mat-grid-tile *ngFor="let product of CONST_DATA">
+          <app-product-card [product]="product"></app-product-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+  

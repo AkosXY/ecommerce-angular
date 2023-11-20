@@ -17,12 +17,11 @@ import { SharedMaterialModule } from './shared/shared.material.module';
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

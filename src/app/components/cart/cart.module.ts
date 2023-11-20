@@ -2,24 +2,29 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { Routes, RouterModule } from '@angular/router';
-import { WorkersComponent } from './workers.component';
+import { CartComponent } from './cart.component';
+import { SharedMaterialModule } from 'src/app/shared/shared.material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
 const routes: Routes = [
   {
     path: '',
-    component: WorkersComponent
+    component: CartComponent
   }
 ];
 
 
 @NgModule({
   declarations: [
-    WorkersComponent
+    CartComponent
   ],
   imports: [
     CommonModule,
+    SharedMaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
 
     RouterModule.forChild(routes),
 
@@ -27,4 +32,4 @@ const routes: Routes = [
   exports: [RouterModule]
 
 })
-export class WorkersModule { }
+export class CartModule { }

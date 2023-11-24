@@ -59,4 +59,8 @@ export class ProductGridComponent {
 
   ]
 
+  CONST_RECOMENDATION:Product[] = [
+    this.PRODUCT, this.PRODUCT, this.PRODUCT, this.PRODUCT
+  ]
+
 }

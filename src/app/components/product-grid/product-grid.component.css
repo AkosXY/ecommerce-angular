@@ -12,5 +12,28 @@
   align-items: center; 
   margin: 20px;
 
+}
 
+.grid-container {
+margin: auto;
+}
+
+
+.featured-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  gap: 10px;
+  padding-left: 20px;
+  justify-content: center; 
+  align-items: center; 
+
+}
+
+.featured-items app-product-card {
+  width: 450px;
+}
+
+.featured-text {
+  padding-left: 80px;
+  margin-bottom: 0px;
 }

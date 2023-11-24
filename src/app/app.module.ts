@@ -12,19 +12,12 @@ import {CookieService} from 'ngx-cookie-service';
 
 import { HomeComponent } from './components/home/home.component';
 import { SharedMaterialModule } from './shared/shared.material.module';
-import { ProductCardComponent } from './components/shared-product/product-card/product-card.component';
-import { ProductDetailDialogComponent } from './components/shared-product/product-detail-dialog/product-detail-dialog.component';
-import { ProductGridModule } from './components/product-grid/product-grid.module';
-
-
-
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    
-
+  
     ToolbarComponent,
     HomeComponent,
   ],
@@ -38,8 +31,6 @@ import { ProductGridModule } from './components/product-grid/product-grid.module
     BrowserAnimationsModule,
 
   ],
-/*   exports:[    ProductDetailDialogComponent,
-    ProductCardComponent], */
   providers: [CookieService],
   bootstrap: [AppComponent]
 })

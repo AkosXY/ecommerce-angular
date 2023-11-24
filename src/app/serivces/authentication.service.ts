@@ -51,6 +51,22 @@ export class AuthenticationService {
     });
   }
 
+  register(username: string, name: string, email: string, password: string) {
+
+    
+    const newUser = {
+      username: username,
+      name: name,
+      email: email,
+      password: password
+    }
+
+    return this.http.post(`${this.apiUrl}/register`, { newUser }).subscribe({
+      //TODO
+    });
+  }
+
+
   logout() {
     this.isAuthenticated = false;
     this.cookieService.delete("authorizationHeader");
@@ -106,6 +122,15 @@ export class AuthenticationService {
   
   getUserData(): User{
     return JSON.parse(this.cookieService.get('userData'));
+  }
+
+  getAuthHeader(){
+    const headerValue = this.cookieService.get("authorizationHeader")
+    if (headerValue) {
+      return new HttpHeaders({
+        'Authorization': headerValue
+      });
+    } return new HttpHeaders();
   }
 
 

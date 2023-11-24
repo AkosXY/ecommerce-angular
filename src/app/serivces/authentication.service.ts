@@ -5,13 +5,15 @@ import { LoginDialogComponent } from '../components/login/dialog/login.dialog.co
 import {CookieService} from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { User } from '../interface/user.interface';
+import * as bcrypt from 'bcryptjs';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  private endpoint = "https://workpace-api.azurewebsites.net/login";
+  private apiUrl = environment.apiUrl;
 
   isAuthenticated = false;
   isAdmin = false;
@@ -23,15 +25,30 @@ export class AuthenticationService {
     return this.isAuthenticated;
   }
 
-  login(username:string, password:string) {
+/*   login(username:string, pass:string) {
+    const password = bcrypt.hashSync(pass, 10)
+    console.log(password)
+    console.log(pass)
+
     const headers = this.createAuthorizationHeader(username, password);
 
-    this.http.get(this.endpoint, { headers: headers }).subscribe({
+    this.http.get(`${this.apiUrl}/login`, { headers }).subscribe({
       next: (response) => this.handleLoginSuccess(response),
       error: (error) => this.handleLoginFailed(error),
       complete: () => this.handleRequestComplete()
     });
+  } */
+  login(username: string, pass: string) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic ' + btoa(`${username}:${pass}`)
+    });
 
+    return this.http.get(`${this.apiUrl}/login`, { headers }).subscribe({
+      next: (response) => this.handleLoginSuccess(response),
+      error: (error) => this.handleLoginFailed(error),
+      complete: () => this.handleRequestComplete()
+    });
   }
 
   logout() {

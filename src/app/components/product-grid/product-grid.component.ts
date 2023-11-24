@@ -54,6 +54,7 @@ export class ProductGridComponent {
 
   
   CONST_DATA:Product[] = [
+    this.PRODUCT, this.PRODUCT, this.PRODUCT, this.PRODUCT, this.PRODUCT, this.PRODUCT,
     this.PRODUCT, this.PRODUCT, this.PRODUCT, this.PRODUCT, this.PRODUCT, this.PRODUCT
 
   ]

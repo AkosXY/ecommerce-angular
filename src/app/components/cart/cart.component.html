@@ -1,62 +1,65 @@
-<h1>Kosár nézet</h1>
-<div class="stepper-container">
+<h1>My Shopping Cart:</h1>
+<div class="cart-container">
+  <div class="stepper-container">
     <mat-stepper labelPosition="bottom" #stepper>
-        <mat-step >
-          <form >
-            <ng-template matStepLabel>View cart items</ng-template>
-
+      <mat-step>
+        <form>
+          <ng-template matStepLabel>View cart items</ng-template>
+          <div class="items-section">
             [LIST OF ITEMS]
-<!--             <mat-form-field>
-              <mat-label>Name</mat-label>
-              <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-            </mat-form-field> -->
-            <div>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="shippingDataForm" >
-          <form [formGroup]="shippingDataForm" class="form-container">
-            <ng-template matStepLabel>Fill out shipping information</ng-template>
-            <mat-form-field>
-              <mat-label>Name</mat-label>
-              <input matInput formControlName="nameForm" placeholder="Ex. 1 Main St, New York, NY" required>
-            </mat-form-field>
-            <mat-form-field>
-              <mat-label>Phone</mat-label>
-              <input matInput formControlName="phoneForm" placeholder="PhoneNumber" required>
-            </mat-form-field>
-            <mat-form-field>
-              <mat-label>Shipping address</mat-label>
-              <input matInput formControlName="addressForm" placeholder="Ex. 1 Main St, New York, NY" required>
-            </mat-form-field>
-            <mat-form-field>
-              <mat-label>Billing address</mat-label>
-              <input matInput formControlName="billingAddressForm" placeholder="Ex. 1 Main St, New York, NY" >
-            </mat-form-field>
-            <mat-form-field>
-              <mat-label>Email</mat-label>
-              <input matInput formControlName="emailForm" placeholder="Provide email address" required>
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </form>
-        </mat-step>
-        <mat-step>
-          <ng-template matStepLabel>Payment</ng-template>
-          <p>Payment section</p>
+          </div>
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="shippingDataForm">
+        <form [formGroup]="shippingDataForm" class="form-container">
+          <ng-template matStepLabel>Fill out shipping information</ng-template>
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="nameForm" placeholder="Ex. 1 Main St, New York, NY" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Phone</mat-label>
+            <input matInput formControlName="phoneForm" placeholder="PhoneNumber" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Shipping address</mat-label>
+            <input matInput formControlName="addressForm" placeholder="Ex. 1 Main St, New York, NY" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Billing address</mat-label>
+            <input matInput formControlName="billingAddressForm" placeholder="Ex. 1 Main St, New York, NY">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="emailForm" placeholder="Provide email address" required>
+          </mat-form-field>
           <div>
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button routerLink="">Comfirm purchase</button>
+            <button mat-button matStepperNext>Next</button>
           </div>
-        </mat-step>
-      </mat-stepper>
-</div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Payment</ng-template>
+        <div class="payment-section">
+          <p>Payment section</p>
+        </div>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button routerLink="">Comfirm purchase</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </div>
+  <div *ngIf="stepper.selectedIndex === 0">
+    <h2 class="featured-text">Featured items you may like</h2>
 
-<h2 class="featured-text">Featured items you may like</h2>
+    <div class="featured-items">
+      <app-product-card *ngFor="let product of CONST_RECOMENDATION" [product]="product"></app-product-card>
+    </div>
+  </div>
 
-<div class="featured-items">
-  <app-product-card *ngFor="let product of CONST_RECOMENDATION" [product]="product"></app-product-card>
 </div>

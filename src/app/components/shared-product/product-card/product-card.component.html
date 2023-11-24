@@ -1,5 +1,5 @@
-<div class="card-container" >
-    <mat-card class="custom-card"  (click)="openDetailDialog(product)">
+<div class="card-container">
+    <mat-card class="custom-card" (click)="openDetailDialog(product)">
         <mat-card-content matRipple>
             <p>{{product?.title}}</p>
             <p>{{product?.brand}}</p>
@@ -10,6 +10,6 @@
             </button>
         </mat-card-content>
     </mat-card>
-    
+
     <h1 *ngIf="!product">No Product Available</h1>
 </div>

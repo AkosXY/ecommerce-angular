@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { Product } from 'src/app/interface/product.interface';
-import { ProductGridComponent } from '../product-grid.component';
+import { ProductGridComponent } from '../../product-grid/product-grid.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({

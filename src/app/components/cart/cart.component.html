@@ -55,7 +55,8 @@
       </mat-stepper>
 </div>
 
+<h2 class="featured-text">Featured items you may like</h2>
 
-<div>
-    TODO RECOMENDATIONS BASED ON ITEMS IN CART
-  </div>
+<div class="featured-items">
+  <app-product-card *ngFor="let product of CONST_RECOMENDATION" [product]="product"></app-product-card>
+</div>

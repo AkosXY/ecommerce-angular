@@ -1,12 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-import { Routes, RouterModule } from '@angular/router';
-import { ProductGridComponent } from './product-grid.component';
-import { SharedMaterialModule } from 'src/app/shared/shared.material.module';
-import { ProductDetailDialogComponent } from './product-detail-dialog/product-detail-dialog.component';
-import { ProductCardComponent } from './product-card/product-card.component';
-
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { SharedMaterialModule } from "src/app/shared/shared.material.module";
+import { ProductCardComponent } from "../shared-product/product-card/product-card.component";
+import { ProductGridComponent } from "./product-grid.component";
+import { ProductDetailDialogComponent } from "../shared-product/product-detail-dialog/product-detail-dialog.component";
+import { SharedProductModule } from "../shared-product/shared-product.module";
 
 const routes: Routes = [
   {
@@ -18,13 +17,12 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    ProductGridComponent,
-    ProductCardComponent,
-    ProductDetailDialogComponent
+    ProductGridComponent
   ],
   imports: [
     CommonModule,
     SharedMaterialModule,
+    SharedProductModule,
     RouterModule.forChild(routes),
 
   ],

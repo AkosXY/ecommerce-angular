@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Product } from 'src/app/interface/product.interface';
 import { CartService } from 'src/app/serivces/cart.service';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-cart-item',
@@ -15,7 +16,7 @@ export class CartItemComponent {
   }
 
   parse(url: any) {
-    return JSON.parse(url)
+    return url !== "[]" ? JSON.parse(url) : environment.defaultLogo;
   }
 
   removeItem(product:any){

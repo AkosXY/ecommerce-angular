@@ -2,10 +2,9 @@ import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Product } from 'src/app/interface/product.interface';
 import { ProductDetailDialogComponent } from '../product-detail-dialog/product-detail-dialog.component';
-import { DomSanitizer } from '@angular/platform-browser';
-import { ProductService } from 'src/app/serivces/product.service';
 import { CartService } from 'src/app/serivces/cart.service';
-import { retry } from 'rxjs';
+import { environment } from 'src/environments/environment.development';
+
 
 @Component({
   selector: 'app-product-card',
@@ -15,8 +14,6 @@ import { retry } from 'rxjs';
 export class ProductCardComponent {
   @Input() product: Product | undefined;
   @Input() display: string | undefined;
-
-  defaultLogo = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2HT8xKgK--TM7RTZii1ajWH4GWmLMwGeThg&usqp=CAU"
 
   constructor(private dialog: MatDialog, private cartService: CartService) {
   }
@@ -51,7 +48,7 @@ export class ProductCardComponent {
   }
 
   parse(url: any) {
-    return url !== "[]" ? JSON.parse(url) : this.defaultLogo;
+    return url !== "[]" ? JSON.parse(url) : environment.defaultLogo;
   }
 
 }

@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     margin: 15px;
+
 }
 
 .custom-card:hover {
@@ -10,8 +11,9 @@
 }
 
 mat-card img {
-    height: 160px;
-    width: 160px;
+    height: 140px;
+    width: 140px;
+    padding: 10px;
 }
 
 
@@ -29,4 +31,17 @@ mat-card img {
     align-items: center;
     justify-content: center;
 
+}
+
+
+.custom-shadow{
+    box-shadow:0 10px 10px 10px rgba(0,0,0,0.3)
+}
+
+mat-card-content p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    line-height: 1.2em;
 }

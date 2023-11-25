@@ -17,8 +17,12 @@ export class ProductService {
     const url = `${this.apiUrl}/products?pageSize=${pageSize}&page=${page}`;
     return this.httpClient.get<any>(url, {
       headers: this.auth.getAuthHeader()
-    });
+    }).pipe(
+
+    );
   }
+
+
 
   getProductsById(id: number): Observable<any> {
     const url = `${this.apiUrl}/products?id=${id}`;

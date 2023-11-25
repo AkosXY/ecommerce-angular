@@ -15,7 +15,8 @@
 }
 
 .custom-card img {
-    height: 160px;
+    height: 140px;
+    padding: 10px;
 }
 
 mat-card button {

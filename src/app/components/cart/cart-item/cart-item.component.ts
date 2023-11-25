@@ -21,7 +21,6 @@ export class CartItemComponent {
 
   removeItem(product:any){
     this.cartService.removeFromCart(product);
-    console.log(product)
   }
 
 }

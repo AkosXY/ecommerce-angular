@@ -29,7 +29,7 @@ export class ProductGridComponent {
 
   getProductRecomendation() {
     this.productService.getProducts(4, 10).subscribe((resp) => {
-      console.log(resp)
+      //console.log(resp)
       this.productRecomendation = resp
     })
   }
@@ -68,7 +68,7 @@ export class ProductGridComponent {
     "imageURL": [
       "https://images-na.ssl-images-amazon.com/images/I/411uoWa89KL._SS40_.jpg"
     ],
-    "imageURLHighRes": [
+    "image_URL_High_Res": [
       "https://images-na.ssl-images-amazon.com/images/I/411uoWa89KL.jpg"
     ]
   }

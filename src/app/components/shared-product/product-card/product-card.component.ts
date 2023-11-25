@@ -14,6 +14,8 @@ import { environment } from 'src/environments/environment.development';
 export class ProductCardComponent {
   @Input() product: Product | undefined;
   @Input() display: string | undefined;
+  @Input() shadow: boolean | undefined;
+
 
   constructor(private dialog: MatDialog, private cartService: CartService) {
   }
@@ -48,6 +50,9 @@ export class ProductCardComponent {
   }
 
   parse(url: any) {
+    //console.log(url)
+    //const correctedUrl = url.replace(/'/g, '"');
+    //console.log(JSON.parse(url))
     return url !== "[]" ? JSON.parse(url) : environment.defaultLogo;
   }
 

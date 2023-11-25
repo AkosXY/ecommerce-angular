@@ -11,6 +11,11 @@
             <p>{{data.brand}}</p><!-- TODO here -->
             <p>in {{ data.main_cat }}</p>
             <p>Price: {{ data.price }}</p>
+<!--             <p>Description: {{ data.description}}</p>
+            <li *ngFor="let item of parseList(data.feature)">{{item}}</li>
+            <p>Category: {{ parse(data.category) }}</p>
+            <p>ASIN: {{ data.asin }}</p> -->
+
             <p>Description: {{ parse(data.description) }}</p>
             <li *ngFor="let item of parseList(data.feature)">{{item}}</li>
             <p>Category: {{ parse(data.category) }}</p>

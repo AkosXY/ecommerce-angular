@@ -25,6 +25,7 @@ export class ProductDetailDialogComponent {
     this.cartService.addToCart(this.data)
   }
 
+
   parse(text: any) {
     return JSON.parse(text)
   }

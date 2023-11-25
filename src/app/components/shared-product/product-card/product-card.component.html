@@ -1,6 +1,6 @@
-<div class="card-container">
-    <mat-card [ngClass]="{ 'custom-column-card': !isRow(), 'custom-row-card': isRow()}"  (click)="openDetailDialog(product)">
-        <img [src]="parse(product?.imageURL)" class="element-logo">
+<div class="card-container" [ngClass]="{'custom-shadow': shadow}">
+    <mat-card class="mat-elevation-z8" [ngClass]="{ 'custom-column-card': !isRow(), 'custom-row-card': isRow()}"  (click)="openDetailDialog(product)">
+        <img [src]="parse(product?.image_URL_High_Res)" class="element-logo">
         <mat-card-content matRipple>
             <p>{{product?.title}}</p>
             <!-- <p>{{product?.brand}}</p> -->

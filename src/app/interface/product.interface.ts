@@ -11,5 +11,5 @@ export interface Product {
   price: string;
   asin: string;
   imageURL: string[];
-  imageURLHighRes: string[];
+  image_URL_High_Res: string[];
 }

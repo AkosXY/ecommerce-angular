@@ -1,17 +1,25 @@
+<div class="feautred-container">
+      <h2 class="featured-text">Featured items you may like</h2>
+      <div class="featured-items" *ngIf="productRecomendation">
+            <app-product-card *ngFor="let product of productRecomendation.products" [product]="product"
+                  [display]="'row'" [shadow]="true"></app-product-card>
+      </div>
+</div>
 <div class="search-container">
-  <mat-form-field style="margin: auto; width: 30%;" >
-      <mat-label>Search...</mat-label>
-      <mat-icon matPrefix>search</mat-icon>
-      <input matInput placeholder="search" >
-  </mat-form-field>
+      <button mat-mini-fab color="primary">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
+      <mat-form-field style="width: 30%;">
+            <mat-label>Search...</mat-label>
+            <mat-icon matPrefix>search</mat-icon>
+            <input matInput placeholder="search">
+      </mat-form-field>
+      <button mat-mini-fab  color="primary">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+</div>
+<div class="list-container" *ngIf="productData">
+      <app-product-card *ngFor="let product of productData.products" [product]="product"
+            [display]="'column'"></app-product-card>
 </div>
 
-<div class="list-container" *ngIf="productData">
-      <app-product-card *ngFor="let product of productData.products" [product]="product" [display]="'column'"></app-product-card>
-</div>
-  
-<h2 class="featured-text">Featured items you may like</h2>
-<div class="featured-items" *ngIf="productRecomendation">
-      <app-product-card *ngFor="let product of productRecomendation.products" [product]="product" [display]="'row'"></app-product-card>
-</div>
-  

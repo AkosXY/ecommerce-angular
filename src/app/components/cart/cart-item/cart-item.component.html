@@ -1,0 +1,12 @@
+<div class="card-container">
+    <mat-card class="custom-card" >
+        <img *ngIf="product?.imageURL" [src]="product?.imageURLHighRes" class="element-logo">
+        <mat-card-content>
+            <p>{{product?.title}}</p>
+            <p>{{product?.brand}}</p>
+            <p>{{product?.price}}</p>
+        </mat-card-content>
+    </mat-card>
+
+    <h1 *ngIf="!product">No Product Available</h1>
+</div>

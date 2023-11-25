@@ -3,15 +3,11 @@
   <div class="stepper-container">
     <mat-stepper labelPosition="bottom" #stepper>
       <mat-step>
-        <form>
           <ng-template matStepLabel>View cart items</ng-template>
           <div class="items-section">
-            [LIST OF ITEMS]
+            <app-cart-item *ngFor="let product of CONST_CART" [product]="product"></app-cart-item>
           </div>
-          <div>
-            <button mat-button matStepperNext>Next</button>
-          </div>
-        </form>
+        <button mat-button matStepperNext>Next</button>
       </mat-step>
       <mat-step [stepControl]="shippingDataForm">
         <form [formGroup]="shippingDataForm" class="form-container">

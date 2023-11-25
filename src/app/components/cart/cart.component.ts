@@ -83,6 +83,11 @@ export class CartComponent {
   CONST_RECOMENDATION:Product[] = [
     this.PRODUCT, this.PRODUCT, this.PRODUCT, this.PRODUCT
   ]
+
+
+  CONST_CART:Product[] = [
+    this.PRODUCT, this.PRODUCT
+  ]
   
 
 

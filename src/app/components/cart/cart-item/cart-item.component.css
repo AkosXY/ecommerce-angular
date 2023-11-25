@@ -1,0 +1,10 @@
+.custom-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: fit-content;
+}
+
+.custom-card img {
+    height: 160px;
+}

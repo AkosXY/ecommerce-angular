@@ -6,20 +6,33 @@
       </div>
 </div>
 <div class="search-container">
-      <button mat-mini-fab color="primary">
-            <mat-icon>keyboard_arrow_left</mat-icon>
-      </button>
+
       <mat-form-field style="width: 30%;">
             <mat-label>Search...</mat-label>
             <mat-icon matPrefix>search</mat-icon>
             <input matInput placeholder="search">
       </mat-form-field>
-      <button mat-mini-fab  color="primary">
-            <mat-icon>keyboard_arrow_right</mat-icon>
-      </button>
+      <div class="button-container">
+
+            <button mat-mini-fab color="primary" (click)="pageLeft()" [disabled]="leftDisabled()">
+                  <mat-icon>keyboard_arrow_left</mat-icon>
+            </button>
+            <p>{{currentPage*selectedPageSize-selectedPageSize+1}}-{{currentPage*selectedPageSize}}</p>
+            <button mat-mini-fab color="primary"(click)="pageRight()">
+                  <mat-icon>keyboard_arrow_right</mat-icon>
+            </button>
+            <mat-form-field class="page-selector" appearance="fill" >
+                  <mat-select [(ngModel)]="selectedPageSize" (ngModelChange)="pageSizeChanged()" name="food">
+                        <mat-option *ngFor="let page of pages" [value]="page.value">
+                              {{page.value}}
+                        </mat-option>
+                  </mat-select>
+            </mat-form-field>
+      </div>
 </div>
 <div class="list-container" *ngIf="productData">
       <app-product-card *ngFor="let product of productData.products" [product]="product"
             [display]="'column'"></app-product-card>
 </div>
-
+<br>
+<br>

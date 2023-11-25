@@ -15,6 +15,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatRippleModule } from '@angular/material/core';
 import { MatStepperModule } from '@angular/material/stepper';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -38,6 +39,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatGridListModule,
     MatRippleModule,
     MatBadgeModule,
+    MatSelectModule,
     MatStepperModule
 
 
@@ -58,6 +60,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatGridListModule,
     MatRippleModule,
     MatBadgeModule,
+    MatSelectModule,
     MatStepperModule
   ]
 

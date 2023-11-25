@@ -14,22 +14,65 @@ export class ProductGridComponent {
   productRecomendation: any
   productList: any
 
+  selectedPageSize: number = 14;
+  currentPage: number = 1;
+  pageCount: number = 1;
+
   constructor(private productService: ProductService) {
     this.getProductData()
     this.getProductRecomendation()
 
   }
 
+  pages: any[] = [
+    { value: 14 },
+    { value: 21 },
+    { value: 28 },
+  ];
+
+  pageSizeChanged() {
+    console.log("changed")
+    this.currentPage = 1
+    this.getProductData()
+  }
+
+  pageLeft() {
+    console.log(this.currentPage)
+
+    if (!this.leftDisabled()) {
+      this.currentPage--
+      this.getProductData()
+    }
+  }
+
+  leftDisabled() {
+    return this.currentPage === 1
+  }
+
+  pageRight() {
+    console.log(this.currentPage)
+    if (!this.rightDisabled()) {
+      this.currentPage++
+      this.getProductData()
+    }
+  }
+
+  rightDisabled() {
+    return this.currentPage === this.pageCount
+  }
+
+
   getProductData() {
-    this.productService.getProducts().subscribe((resp) => {
+    console.log("getter")
+    this.productService.getProducts(this.selectedPageSize, this.currentPage).subscribe((resp) => {
       console.log(resp)
       this.productData = resp
+      this.pageCount = resp.pageCount
     })
   }
 
   getProductRecomendation() {
     this.productService.getProducts(4, 10).subscribe((resp) => {
-      //console.log(resp)
       this.productRecomendation = resp
     })
   }

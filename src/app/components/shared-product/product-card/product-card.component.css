@@ -45,3 +45,10 @@ mat-card-content p {
     -webkit-line-clamp: 3;
     line-height: 1.2em;
 }
+
+
+.crazy-hover-effect:hover {
+    transition: 0.2s;
+    transform: translate(0, -10px);
+    font-weight: 450;
+}

@@ -13,16 +13,12 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient, private auth: AuthenticationService) { }
 
-  getProducts(pageSize: number = 28, page: number = 1): Observable<any> {
-    const url = `${this.apiUrl}/products?pageSize=${pageSize}&page=${page}`;
+  getProducts(pageSize: number = 28, page: number = 1, searchTerm: string = ''): Observable<any> {
+    const url = `${this.apiUrl}/products?pageSize=${pageSize}&page=${page}&qTitle=${searchTerm}`;
     return this.httpClient.get<any>(url, {
       headers: this.auth.getAuthHeader()
-    }).pipe(
-
-    );
+    })
   }
-
-
 
   getProductsById(id: number): Observable<any> {
     const url = `${this.apiUrl}/products?id=${id}`;

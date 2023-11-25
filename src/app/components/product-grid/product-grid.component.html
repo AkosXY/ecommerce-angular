@@ -7,21 +7,25 @@
 </div>
 <div class="search-container">
 
-      <mat-form-field style="width: 30%;">
-            <mat-label>Search...</mat-label>
-            <mat-icon matPrefix>search</mat-icon>
-            <input matInput placeholder="search">
-      </mat-form-field>
+      <form class="searchbar-container" [formGroup]="searchForm">
+            <mat-form-field >
+                  <mat-label>Search...</mat-label>
+                  <mat-icon matPrefix>search</mat-icon>
+                  <input matInput placeholder="search" formControlName="seachInputForm">
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="search()">
+                  Search
+            </button>
+      </form>
       <div class="button-container">
-
             <button mat-mini-fab color="primary" (click)="pageLeft()" [disabled]="leftDisabled()">
                   <mat-icon>keyboard_arrow_left</mat-icon>
             </button>
             <p>{{currentPage*selectedPageSize-selectedPageSize+1}}-{{currentPage*selectedPageSize}}</p>
-            <button mat-mini-fab color="primary"(click)="pageRight()">
+            <button mat-mini-fab color="primary" (click)="pageRight()" [disabled]="rightDisabled()">
                   <mat-icon>keyboard_arrow_right</mat-icon>
             </button>
-            <mat-form-field class="page-selector" appearance="fill" >
+            <mat-form-field class="page-selector" appearance="fill">
                   <mat-select [(ngModel)]="selectedPageSize" (ngModelChange)="pageSizeChanged()" name="food">
                         <mat-option *ngFor="let page of pages" [value]="page.value">
                               {{page.value}}

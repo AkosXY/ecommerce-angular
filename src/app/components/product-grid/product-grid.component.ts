@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Product } from 'src/app/interface/product.interface';
 import { CartService } from 'src/app/serivces/cart.service';
 import { ProductService } from 'src/app/serivces/product.service';
@@ -17,12 +18,25 @@ export class ProductGridComponent {
   selectedPageSize: number = 14;
   currentPage: number = 1;
   pageCount: number = 1;
+  searchTerm: string = "";
 
   constructor(private productService: ProductService) {
     this.getProductData()
     this.getProductRecomendation()
 
   }
+
+  searchForm = new FormGroup({
+    seachInputForm: new FormControl(''),
+  })
+
+
+  search(){
+    this.searchTerm = this.seachInputForm?.value || ''
+    this.currentPage = 1
+    this.getProductData()
+  }
+
 
   pages: any[] = [
     { value: 14 },
@@ -64,7 +78,7 @@ export class ProductGridComponent {
 
   getProductData() {
     console.log("getter")
-    this.productService.getProducts(this.selectedPageSize, this.currentPage).subscribe((resp) => {
+    this.productService.getProducts(this.selectedPageSize, this.currentPage, this.searchTerm).subscribe((resp) => {
       console.log(resp)
       this.productData = resp
       this.pageCount = resp.pageCount
@@ -76,6 +90,11 @@ export class ProductGridComponent {
       this.productRecomendation = resp
     })
   }
+
+  get seachInputForm() {
+    return this.searchForm.get('seachInputForm');
+  }
+
 
 
   PRODUCT: Product = {

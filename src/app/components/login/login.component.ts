@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthenticationService } from 'src/app/serivces/authentication.service';
 import { AbstractControl, ValidatorFn, ValidationErrors, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NewUser } from 'src/app/interface/new-user.interface';
 
 export function passwordMatchValidator(confirmControl: AbstractControl): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -28,14 +29,16 @@ export class LoginComponent {
   constructor(private authService: AuthenticationService, private router: Router) { }
 
   loginForm = new FormGroup({
-    usernameForm: new FormControl('', [Validators.required]),
-    passwordForm: new FormControl('', [Validators.required, Validators.minLength(5)])
+    usernameForm: new FormControl('theUser', [Validators.required]),
+    passwordForm: new FormControl('555555', [Validators.required, Validators.minLength(5)])
   })
 
   newPasswordForm = new FormControl('', [Validators.required, Validators.minLength(5)]);
   confirmPasswordForm = new FormControl('', [Validators.required, Validators.minLength(5), passwordMatchValidator(this.newPasswordForm)]);
 
   signupForm = new FormGroup({
+    newUsernameForm: new FormControl('', [ Validators.required]),
+    newNameForm: new FormControl('', [Validators.required]),
     newEmailForm: new FormControl('', [Validators.email, Validators.required]),
     newPasswordForm: this.newPasswordForm,
     confirmPasswordForm: this.confirmPasswordForm
@@ -49,6 +52,14 @@ export class LoginComponent {
 
   get passwordForm() {
     return this.loginForm.get('passwordForm');
+  }
+
+  get newNameForm() {
+    return this.signupForm.get('newNameForm');
+  }
+
+  get newUsernameForm() {
+    return this.signupForm.get('newUsernameForm');
   }
 
   get newEmailForm() {
@@ -68,8 +79,15 @@ export class LoginComponent {
   }
 
   signup() {
+    const newUser:NewUser = {
+      username: this.newUsernameForm?.value || '',
+      name: this.newNameForm?.value  || '',
+      email: this.newEmailForm?.value || '',
+      password: this.newPasswordForm.value || ''
+    }
+
     if (this.signupForm.valid) { //TODO authentication
-      this.router.navigateByUrl('/home');
+      this.authService.register(newUser)
       //this.authService.login()
     }
   }

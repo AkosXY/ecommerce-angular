@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { User } from '../interface/user.interface';
 import * as bcrypt from 'bcryptjs';
 import { environment } from 'src/environments/environment.development';
+import { NewUser } from '../interface/new-user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -25,44 +26,21 @@ export class AuthenticationService {
     return this.isAuthenticated;
   }
 
-/*   login(username:string, pass:string) {
-    const password = bcrypt.hashSync(pass, 10)
-    console.log(password)
+  login(username:string, pass:string) {
     console.log(pass)
 
-    const headers = this.createAuthorizationHeader(username, password);
+    const headers = this.createAuthorizationHeader(username, pass);
 
     this.http.get(`${this.apiUrl}/login`, { headers }).subscribe({
       next: (response) => this.handleLoginSuccess(response),
       error: (error) => this.handleLoginFailed(error),
       complete: () => this.handleRequestComplete()
     });
-  } */
-  login(username: string, pass: string) {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Basic ' + btoa(`${username}:${pass}`)
-    });
+  } 
 
-    return this.http.get(`${this.apiUrl}/login`, { headers }).subscribe({
-      next: (response) => this.handleLoginSuccess(response),
-      error: (error) => this.handleLoginFailed(error),
-      complete: () => this.handleRequestComplete()
-    });
-  }
+  register(user: NewUser) {
 
-  register(username: string, name: string, email: string, password: string) {
-
-    
-    const newUser = {
-      username: username,
-      name: name,
-      email: email,
-      password: password
-    }
-
-    return this.http.post(`${this.apiUrl}/register`, { newUser }).subscribe({
-      //TODO
+    return this.http.post(`${this.apiUrl}/register`, { user }).subscribe({
     });
   }
 
@@ -94,23 +72,14 @@ export class AuthenticationService {
   }
 
   private handleLoginSuccess(response: any): void {
-    if (response && response.admin === true) {
-      console.log('Admin login successful:', response);
-      this.storeDataInCookies(response);
-
-    } else {
-      console.error('Login failed: Not an admin user.');
-    }
+    console.log(' login successful:', response);
+    this.storeDataInCookies(response)
   }
   
   private handleRequestComplete(): void {
     console.log('Request completed.');
-    if (this.isAdmin) {
-      this.router.navigateByUrl('/home');
-      this.isAuthenticated = true;
-    } else {
-      this.openDialog(true)
-    }
+    this.isAuthenticated=true
+    this.router.navigateByUrl('/all-products')
   }
 
   storeDataInCookies(response: any){ 

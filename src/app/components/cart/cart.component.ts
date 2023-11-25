@@ -48,6 +48,10 @@ export class CartComponent {
     })
   }
 
+  comfirmPurchase() {
+    this.cartService.emptyCart()
+  }
+
 
   get addressForm() {
     return this.shippingDataForm.get('addressForm');

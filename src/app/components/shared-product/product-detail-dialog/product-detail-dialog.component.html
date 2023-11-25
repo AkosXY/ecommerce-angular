@@ -1,21 +1,27 @@
 <div class="main-container">
     <mat-dialog-content class="dialog-content">
-        <div class="button-close">
-            <h1>{{data.title}}</h1>
+        <div class="data-header-container">
+            <div class="base-data-container">
+                <img [src]="parse(data.image_URL_High_Res)" class="element-logo">
+                <div>
+                    <h1>{{data.title}}</h1>
+                    <div>
+                        <p>{{data.brand}}</p><!-- TODO here -->
+                        <p>in {{ data.main_cat }}</p>
+                        <h2 class="price-text">{{ data.price }}</h2>
+                        <button mat-raised-button (click)="addItemToCart()">
+                            <mat-icon>shopping_cart</mat-icon>
+                            Add to cart - {{ data.price }}
+                        </button>
+                    </div>
+                </div>
+            </div>
             <button mat-mini-fab matTooltip="Primary" color="primary" matDialogClose>
                 <mat-icon>close</mat-icon>
             </button>
         </div>
         <br>
         <div>
-            <p>{{data.brand}}</p><!-- TODO here -->
-            <p>in {{ data.main_cat }}</p>
-            <p>Price: {{ data.price }}</p>
-<!--             <p>Description: {{ data.description}}</p>
-            <li *ngFor="let item of parseList(data.feature)">{{item}}</li>
-            <p>Category: {{ parse(data.category) }}</p>
-            <p>ASIN: {{ data.asin }}</p> -->
-
             <p>Description: {{ parse(data.description) }}</p>
             <li *ngFor="let item of parseList(data.feature)">{{item}}</li>
             <p>Category: {{ parse(data.category) }}</p>
@@ -23,15 +29,16 @@
         </div>
     
     </mat-dialog-content>
-    <mat-dialog-actions class="review-container">
+<!--     <mat-dialog-actions class="review-container">
     
         <div class="button-container">
+            
             <button mat-raised-button (click)="addItemToCart()">
                 <mat-icon>shopping_cart</mat-icon>
-                add to cart
+                Add to cart
             </button>
             <button mat-raised-button color="none" matDialogClose>Cancel</button>
         </div>
     
-    </mat-dialog-actions>
+    </mat-dialog-actions> -->
 </div>

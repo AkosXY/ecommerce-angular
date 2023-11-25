@@ -1,30 +1,68 @@
-.button-container{
+.button-container {
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
+    gap: 50px;
+    padding-bottom: 20px;
 }
 
-.button-close{
+.dialog-content{
+}
+/* .button-close {
     display: flex;
     flex-direction: row;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: center;
     height: 25px;
     padding-top: 20px;
     gap: 35px;
-}
+} */
 
-.button-close h1{
-    margin: 0px;    
+h1 {
+    padding-right: 25px;
 }
 
 
 .main-container {
-    scrollbar-width: none !important; /* Hide the scrollbar in Firefox */
-    -ms-overflow-style: none !important; /* Hide the scrollbar in Edge */
+
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+
     ::-webkit-scrollbar {
-        display: none !important; /* Hide the scrollbar in WebKit-based browsers */
+        display: none !important;
     }
 
+}
+
+.data-header-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.data-header-container p {
+    margin-bottom: 0px;
+    font-size: 18px;
+}
+
+.price-text{
+    padding-top: 10px;
+    font-size: 32px;
+    font-weight: 500;
+}
+
+
+.base-data-container {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+img {
+    height: 250px;
+    padding-right: 35px;
 }

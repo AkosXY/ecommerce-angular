@@ -60,3 +60,7 @@ mat-stepper button {
     margin-top: 25px;
     font-size: 16px;
 }
+
+/* mat-stepper{
+    background-color: rgba(100, 100, 100, 0.315);
+} */

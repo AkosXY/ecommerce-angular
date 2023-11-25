@@ -32,6 +32,11 @@ export class CartService {
 
   }
 
+  emptyCart() {
+    this.cartItems = []
+    this.emitCartUpdate()
+  }
+
   emitCartUpdate() {
     this.cartUpdated.emit(this.getItemNumber());
   }

@@ -28,14 +28,14 @@ export class ProductService {
   }
 
   getProductsByAsin(asin: number): Observable<any> {
-    const url = `${this.apiUrl}/products/asin?asin =${asin}`;
+    const url = `${this.apiUrl}/products/asin?asin=${asin}`;
     return this.httpClient.get<any>(url, {
       headers: this.auth.getAuthHeader()
     });
   }
 
   deleteProduct(id: number): Observable<boolean> {
-    const url = `${this.apiUrl}/products?id =${id}`;
+    const url = `${this.apiUrl}/products?id=${id}`;
     return this.httpClient.delete(url, {
       headers: this.auth.getAuthHeader(),
       observe: "response"

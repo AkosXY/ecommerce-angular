@@ -28,7 +28,7 @@
     padding-left: 20px;
     justify-content: center;
     align-items: center;
-
+    padding-bottom: 50px;
 }
 
 .featured-items app-product-card {

@@ -1,21 +1,21 @@
-.search-container{
-    display: flex;
-    flex-direction: row;
-    padding-top: 10px;
-  }
+.search-container {
+  display: flex;
+  flex-direction: row;
+  padding-top: 10px;
+}
 
 .list-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 10px;
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
   margin: 20px;
 
 }
 
 .grid-container {
-margin: auto;
+  margin: auto;
 }
 
 
@@ -24,8 +24,9 @@ margin: auto;
   grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
   gap: 10px;
   padding-left: 20px;
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 50px;
 
 }
 

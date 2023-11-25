@@ -9,7 +9,7 @@
 
     <div class="button-container">
         <button mat-button routerLink="cart">
-            <mat-icon>shopping_cart</mat-icon>
+            <mat-icon [matBadge]="cartItems" matBadgeColor="warn" matBadgeSize="small" [matBadgeHidden]="hideBadge">shopping_cart</mat-icon>
             cart
         </button>
         <ng-container *ngIf="!getAuthenticated(); else logoutBlock;">

@@ -4,8 +4,8 @@
     <mat-stepper labelPosition="bottom" #stepper>
       <mat-step>
           <ng-template matStepLabel>View cart items</ng-template>
-          <div class="items-section" *ngIf="productData">
-            <app-cart-item *ngFor="let product of productData.products" [product]="product"></app-cart-item>
+          <div class="items-section" *ngIf="cartItems">
+            <app-cart-item *ngFor="let product of cartItems" [product]="product"></app-cart-item>
           </div>
         <button mat-button matStepperNext>Next</button>
       </mat-step>
@@ -53,8 +53,8 @@
   <div *ngIf="stepper.selectedIndex === 0">
     <h2 class="featured-text">Featured items you may like</h2>
 
-    <div class="featured-items" *ngIf="productData" >
-      <app-product-card *ngFor="let product of productData.products" [product]="product"></app-product-card>
+    <div class="featured-items" *ngIf="productRecomendation" >
+      <app-product-card *ngFor="let product of productRecomendation.products" [product]="product"></app-product-card>
     </div>
   </div>
 

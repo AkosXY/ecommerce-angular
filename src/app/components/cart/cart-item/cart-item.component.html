@@ -1,11 +1,16 @@
 <div class="card-container">
     <mat-card class="custom-card" >
-        <img *ngIf="product?.imageURL" [src]="parse(product?.imageURL)" class="element-logo">
-        <mat-card-content>
-            <p>{{product?.title}}</p>
-            <p>{{product?.brand}}</p>
-            <p>{{product?.price}}</p>
-        </mat-card-content>
+        <div class="product-container">
+            <img *ngIf="product?.imageURL" [src]="parse(product?.imageURL)" class="element-logo">
+            <mat-card-content>
+                <p>{{product?.title}}</p>
+                <p>{{product?.brand}}</p>
+                <p>{{product?.price}}</p>
+            </mat-card-content>
+        </div>
+        <button mat-fab (click)="removeItem(product)" color="primary">
+            <mat-icon>delete</mat-icon>
+        </button>
     </mat-card>
 
     <h1 *ngIf="!product">No Product Available</h1>

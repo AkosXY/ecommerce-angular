@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Product } from 'src/app/interface/product.interface';
+import { CartService } from 'src/app/serivces/cart.service';
 import { ProductService } from 'src/app/serivces/product.service';
 
 @Component({
@@ -11,7 +12,10 @@ import { ProductService } from 'src/app/serivces/product.service';
 export class CartComponent {
 
   productData:any
+  productRecomendation: any
   productList:any
+
+  cartItems: any[] = [];
 
 
   shippingDataForm = new FormGroup({
@@ -22,9 +26,18 @@ export class CartComponent {
     emailForm: new FormControl('')
   })
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private cartService: CartService) {
     this.getProducts()
+    this.getProductRecomendation()
+    this.cartItems = this.cartService.getCartItems();
 
+  }
+
+  getProductRecomendation() {
+    this.productService.getProducts(4, 10).subscribe((resp) => {
+      console.log(resp)
+      this.productRecomendation = resp
+    })
   }
 
 

@@ -4,6 +4,7 @@ import { Product } from 'src/app/interface/product.interface';
 import { ProductDetailDialogComponent } from '../product-detail-dialog/product-detail-dialog.component';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ProductService } from 'src/app/serivces/product.service';
+import { CartService } from 'src/app/serivces/cart.service';
 
 @Component({
   selector: 'app-product-card',
@@ -14,13 +15,16 @@ export class ProductCardComponent {
   @Input() product: Product | undefined;
   @Input() display: string | undefined;
 
-  constructor(private dialog: MatDialog){
+  constructor(private dialog: MatDialog, private cartService: CartService){
   }
 
   ngOnInit() {
 
   }
 
+  addToCart(product: any) {
+    this.cartService.addToCart(product);
+  }
 
   openDetailDialog(product:any) {
     console.log('Open detail dialog');
@@ -34,7 +38,9 @@ export class ProductCardComponent {
     event.stopPropagation();
     
     console.log('Button clicked');
-    console.log(product);
+    
+    this.addToCart(product)
+    
   }
 
   isRow(){

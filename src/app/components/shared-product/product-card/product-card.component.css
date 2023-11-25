@@ -1,8 +1,32 @@
 .card-container {
+    display: flex;
+    justify-content: center;
     margin: 15px;
 }
 
 .custom-card:hover {
     cursor: pointer;
     background-color: rgb(245, 245, 245)
+}
+
+mat-card img {
+    height: 160px;
+    width: 160px;
+}
+
+
+.custom-row-card{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.custom-column-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
 }

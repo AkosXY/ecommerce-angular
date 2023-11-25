@@ -10,11 +10,13 @@ import { ProductDetailDialogComponent } from '../product-detail-dialog/product-d
 })
 export class ProductCardComponent {
   @Input() product: Product | undefined;
+  @Input() display: string | undefined;
 
   constructor(private dialog: MatDialog){}
 
   ngOnInit() {
-    console.log('Received product data:', this.product);
+    //console.log('Received product data:', this.product);
+    console.log(this.display)
   }
 
 
@@ -31,6 +33,10 @@ export class ProductCardComponent {
     
     console.log('Button clicked');
     console.log(product);
+  }
+
+  isRow(){
+    return this.display?.toString() === "row"
   }
 
 

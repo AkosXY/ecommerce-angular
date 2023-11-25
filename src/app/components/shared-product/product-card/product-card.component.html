@@ -1,5 +1,6 @@
 <div class="card-container">
-    <mat-card class="custom-card" (click)="openDetailDialog(product)">
+    <mat-card [ngClass]="{ 'custom-column-card': !isRow(), 'custom-row-card': isRow()}"  (click)="openDetailDialog(product)">
+        <img [src]="product?.imageURLHighRes" class="element-logo">
         <mat-card-content matRipple>
             <p>{{product?.title}}</p>
             <p>{{product?.brand}}</p>

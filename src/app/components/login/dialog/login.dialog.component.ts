@@ -11,7 +11,7 @@ import { MAT_DIALOG_DATA } from "@angular/material/dialog";
     constructor(@Inject(MAT_DIALOG_DATA) public permission: any) {}
 
     ngOnInit() {
-        console.log('Received data:', this.permission);
+        //console.log('Received data:', this.permission);
       }
     
   }

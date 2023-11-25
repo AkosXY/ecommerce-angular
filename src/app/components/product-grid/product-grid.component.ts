@@ -78,6 +78,7 @@ export class ProductGridComponent {
 
   getProductData() {
     console.log("getter")
+    this.productData = false
     this.productService.getProducts(this.selectedPageSize, this.currentPage, this.searchTerm).subscribe((resp) => {
       console.log(resp)
       this.productData = resp

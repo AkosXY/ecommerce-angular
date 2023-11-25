@@ -21,7 +21,7 @@ export class ProductService {
   }
 
   getProductsById(id: number): Observable<any> {
-    const url = `${this.apiUrl}/products?id =${id}`;
+    const url = `${this.apiUrl}/products?id=${id}`;
     return this.httpClient.get<any>(url, {
       headers: this.auth.getAuthHeader()
     });

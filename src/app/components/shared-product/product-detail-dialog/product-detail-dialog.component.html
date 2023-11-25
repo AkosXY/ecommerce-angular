@@ -8,13 +8,12 @@
     <br>
     <div>
         <p>{{data.brand}}</p><!-- TODO here -->
-        <p>Main Category: {{ data.main_cat }}</p>
-        <p>Date: {{ data.date }}</p>
+        <p>in {{ data.main_cat }}</p>
         <p>Price: {{ data.price }}</p>
+        <p>Description: {{ parse(data.description) }}</p>
+        <li *ngFor="let item of parseList(data.feature)">{{item}}</li>
+        <p>Category: {{ parse(data.category) }}</p>
         <p>ASIN: {{ data.asin }}</p>
-        <p>Description: {{ data.description }}</p>
-        <p>Category: {{ data.category }}</p>
-        <p>Feature: {{ data.feature }}</p>
     </div>
 
 </mat-dialog-content>

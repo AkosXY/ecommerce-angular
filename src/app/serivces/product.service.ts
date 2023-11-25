@@ -13,7 +13,7 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient, private auth: AuthenticationService) { }
 
-  getProducts(pageSize: number = 10, page: number = 0): Observable<any> {
+  getProducts(pageSize: number = 14, page: number = 1): Observable<any> {
     const url = `${this.apiUrl}/products?pageSize=${pageSize}&page=${page}`;
     return this.httpClient.get<any>(url, {
       headers: this.auth.getAuthHeader()

@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Product } from 'src/app/interface/product.interface';
 import { ProductDetailDialogComponent } from '../product-detail-dialog/product-detail-dialog.component';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ProductService } from 'src/app/serivces/product.service';
 
 @Component({
   selector: 'app-product-card',
@@ -12,11 +14,11 @@ export class ProductCardComponent {
   @Input() product: Product | undefined;
   @Input() display: string | undefined;
 
-  constructor(private dialog: MatDialog){}
+  constructor(private dialog: MatDialog){
+  }
 
   ngOnInit() {
-    //console.log('Received product data:', this.product);
-    console.log(this.display)
+
   }
 
 
@@ -39,5 +41,8 @@ export class ProductCardComponent {
     return this.display?.toString() === "row"
   }
 
+  parse(url:any){
+    return JSON.parse(url)
+  }
 
 }

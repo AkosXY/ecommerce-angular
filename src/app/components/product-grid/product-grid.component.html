@@ -6,12 +6,12 @@
   </mat-form-field>
 </div>
 
-<div class="list-container">
-    <app-product-card *ngFor="let product of CONST_DATA" [product]="product" [display]="'column'"></app-product-card>
+<div class="list-container" *ngIf="productData">
+      <app-product-card *ngFor="let product of productData.products" [product]="product" [display]="'column'"></app-product-card>
 </div>
   
 <h2 class="featured-text">Featured items you may like</h2>
-<div class="featured-items">
-      <app-product-card *ngFor="let product of CONST_RECOMENDATION" [product]="product" [display]="'row'"></app-product-card>
+<div class="featured-items" *ngIf="productRecomendation">
+      <app-product-card *ngFor="let product of productRecomendation.products" [product]="product" [display]="'row'"></app-product-card>
 </div>
   

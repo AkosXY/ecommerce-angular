@@ -19,4 +19,14 @@ export class ProductDetailDialogComponent {
   getProperty(obj: any, key: string): any {
     return obj[key as keyof Product];
   }
+
+  parse(text:any){
+    return JSON.parse(text)
+  }
+
+  parseList(text:any){ //TODO
+    console.log(JSON.parse(text))
+    return JSON.parse(text)
+  }
+
 }

@@ -10,4 +10,8 @@ export class CartItemComponent {
 
   @Input() product: Product | undefined;
 
+  parse(url: any) {
+    return JSON.parse(url)
+  }
+
 }

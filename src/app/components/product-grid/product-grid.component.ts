@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Product } from 'src/app/interface/product.interface';
+import { ProductService } from 'src/app/serivces/product.service';
 
 @Component({
   selector: 'app-product-grid',
@@ -8,12 +9,32 @@ import { Product } from 'src/app/interface/product.interface';
 })
 export class ProductGridComponent {
 
-  constructor() {
-    console.log(this.CONST_DATA);
+  productData: any
+  productRecomendation: any
+  productList: any
+
+  constructor(private productService: ProductService) {
+    this.getProductData()
+    this.getProductRecomendation()
+
+  }
+
+  getProductData() {
+    this.productService.getProducts().subscribe((resp) => {
+      console.log(resp)
+      this.productData = resp
+    })
+  }
+
+  getProductRecomendation() {
+    this.productService.getProducts(4, 10).subscribe((resp) => {
+      console.log(resp)
+      this.productRecomendation = resp
+    })
   }
 
 
-  PRODUCT:Product = {
+  PRODUCT: Product = {
     "category": [
       "Electronics",
       "Camera & Photo",
@@ -52,14 +73,14 @@ export class ProductGridComponent {
   }
 
 
-  
-  CONST_DATA:Product[] = [
+
+  CONST_DATA: Product[] = [
     this.PRODUCT, this.PRODUCT, this.PRODUCT, this.PRODUCT, this.PRODUCT, this.PRODUCT,
     this.PRODUCT, this.PRODUCT, this.PRODUCT, this.PRODUCT, this.PRODUCT, this.PRODUCT
 
   ]
 
-  CONST_RECOMENDATION:Product[] = [
+  CONST_RECOMENDATION: Product[] = [
     this.PRODUCT, this.PRODUCT, this.PRODUCT, this.PRODUCT
   ]
 

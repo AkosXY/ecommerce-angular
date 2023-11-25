@@ -5,7 +5,7 @@ import { LoginDialogComponent } from '../components/login/dialog/login.dialog.co
 import {CookieService} from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { User } from '../interface/user.interface';
-import * as bcrypt from 'bcryptjs';
+
 import { environment } from 'src/environments/environment.development';
 import { NewUser } from '../interface/new-user.interface';
 
@@ -39,9 +39,7 @@ export class AuthenticationService {
   } 
 
   register(user: NewUser) {
-
-    return this.http.post(`${this.apiUrl}/register`, { user }).subscribe({
-    });
+    return this.http.post(`${this.apiUrl}/register`, { user })
   }
 
 

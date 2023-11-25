@@ -3,6 +3,7 @@ import { AuthenticationService } from 'src/app/serivces/authentication.service';
 import { AbstractControl, ValidatorFn, ValidationErrors, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NewUser } from 'src/app/interface/new-user.interface';
+import * as bcrypt from 'bcryptjs';
 
 export function passwordMatchValidator(confirmControl: AbstractControl): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -29,8 +30,8 @@ export class LoginComponent {
   constructor(private authService: AuthenticationService, private router: Router) { }
 
   loginForm = new FormGroup({
-    usernameForm: new FormControl('theUser', [Validators.required]),
-    passwordForm: new FormControl('555555', [Validators.required, Validators.minLength(5)])
+    usernameForm: new FormControl('', [Validators.required]),
+    passwordForm: new FormControl('', [Validators.required, Validators.minLength(5)])
   })
 
   newPasswordForm = new FormControl('', [Validators.required, Validators.minLength(5)]);
@@ -71,7 +72,7 @@ export class LoginComponent {
   }
 
   login() {
-    if (this.loginForm.valid) { //TODO authentication
+    if (this.loginForm.valid) { 
       let username:string = this.usernameForm?.value ? this.usernameForm?.value.toString() : "";
       let password:string = this.passwordForm?.value ? this.passwordForm?.value.toString() : ""
       this.authService.login(username, password)
@@ -83,12 +84,15 @@ export class LoginComponent {
       username: this.newUsernameForm?.value || '',
       name: this.newNameForm?.value  || '',
       email: this.newEmailForm?.value || '',
-      password: this.newPasswordForm.value || ''
+      password: bcrypt.hashSync(this.newPasswordForm.value || '')  
     }
 
-    if (this.signupForm.valid) { //TODO authentication
-      this.authService.register(newUser)
-      //this.authService.login()
+    console.log(newUser.password)
+
+    if (this.signupForm.valid) { 
+      this.authService.register(newUser).subscribe({
+      
+      });
     }
   }
 

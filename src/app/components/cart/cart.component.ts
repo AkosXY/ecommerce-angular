@@ -44,8 +44,9 @@ export class CartComponent {
 
 
   getProductRecomendation() {
-    this.productService.getProducts(4, 12).subscribe((resp) => {
-      this.productRecomendation = resp
+    this.productService.getCartRecomendation(this.cartService.getCartItemsForRecomendation()).subscribe((resp) => {
+      this.productRecomendation = resp.filter((item: any) => item !== null).slice(0, 4);
+      console.log(this.productRecomendation)
     })
   }
 

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AuthenticationService } from './authentication.service';
 import { Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
+import { SimpleProduct } from '../interface/product.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -74,6 +75,13 @@ export class ProductService {
   getRecomendation(): Observable<any> {
     const url = `${this.apiUrl}/products/user-recommendations`;
     return this.httpClient.get<any>(url, {
+      headers: this.auth.getAuthHeader()
+    });
+  }
+
+  getCartRecomendation(cartItems: SimpleProduct[]): Observable<any> {
+    const url = `${this.apiUrl}/products/cart-recommendations`;
+    return this.httpClient.post<any>(url,cartItems, {
       headers: this.auth.getAuthHeader()
     });
   }

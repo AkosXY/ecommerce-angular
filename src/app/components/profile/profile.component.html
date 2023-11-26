@@ -1,6 +1,20 @@
 <div *ngIf="!isUserNull()" class="container">
-    <div class="col">
-    <mat-card>
+
+<div class="col2">
+    <h2>Recently purchased items: </h2>
+    <div class="list-container" *ngIf="productData; else spinnerBlock">
+       
+        <app-product-card *ngFor="let product of productData" [product]="product"
+        [display]="'row'" [showButton]="false"></app-product-card>
+    </div>
+    <ng-template #spinnerBlock>
+        <div class="spinner-container">
+            <mat-spinner diameter="120"></mat-spinner>
+        </div>
+    </ng-template>
+</div>
+<div class="col">
+    <mat-card >
         <div class="data-container">
             <mat-card-header>
                 <mat-card-title>{{userData.name}}</mat-card-title>
@@ -16,18 +30,5 @@
         <!-- <mat-icon class="icon">account_circle</mat-icon> -->
         <img src="assets/profile.png" alt="qr code" width="80" height="80">
     </mat-card>
-</div>
-<div class="col">
-    <h2>Recently purchased items: </h2>
-    <div class="list-container" *ngIf="productData; else spinnerBlock">
-       
-        <app-product-card *ngFor="let product of productData" [product]="product"
-        [display]="'row'" [showButton]="false"></app-product-card>
-    </div>
-    <ng-template #spinnerBlock>
-        <div class="spinner-container">
-            <mat-spinner diameter="120"></mat-spinner>
-        </div>
-    </ng-template>
 </div>
 </div>

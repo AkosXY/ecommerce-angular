@@ -1,7 +1,7 @@
 <div class="card-container crazy-hover-effect" [ngClass]="{'custom-shadow': shadow}">
-    <mat-card class="mat-elevation-z8" [ngClass]="{ 'custom-column-card': !isRow(), 'custom-row-card': isRow()}"  (click)="openDetailDialog(product)">
+    <mat-card class="mat-elevation-z8 w-100" [ngClass]="{ 'custom-column-card': !isRow(), 'custom-row-card': isRow()}"  (click)="openDetailDialog(product)">
         <img [src]="parse(product?.image_URL_High_Res)" class="element-logo">
-        <mat-card-content matRipple>
+        <mat-card-content matRipple class="w-100">
             <p>{{product?.title}}</p>
             <!-- <p>{{product?.brand}}</p> -->
             <p>{{product?.price}}</p>

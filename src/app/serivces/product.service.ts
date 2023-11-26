@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthenticationService } from './authentication.service';
 import { Observable, map } from 'rxjs';
@@ -54,6 +54,21 @@ export class ProductService {
     )
   }
 
+  placeOrder(product: any): Observable<boolean> {
+    const url = `${this.apiUrl}/products/order/${product.asin}`;
+    return this.httpClient.post(url, null, {
+      headers: this.auth.getAuthHeader(),
+      observe: 'response',
+    }).pipe(
+      map(resp => resp.status === 200)
+    );
+  }
 
+  getPreviosOrders(): Observable<any> {
+    const url = `${this.apiUrl}/products/previous-orders`;
+    return this.httpClient.get<any>(url, {
+      headers: this.auth.getAuthHeader()
+    });
+  }
 
 }

@@ -23,8 +23,11 @@ border-bottom: solid rgba(142, 142, 142, 1) 2px;
 }
 
 .list-container {
+/*   padding-left: 130px;
+  padding-right: 130px; */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+/*   grid-template-columns: repeat(5, minmax(250px, 1fr)); */
   gap: 10px;
   justify-content: center;
   align-items: center;

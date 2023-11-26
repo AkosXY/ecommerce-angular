@@ -52,3 +52,9 @@ mat-card-content p {
     transform: translate(0, -10px);
     font-weight: 450;
 }
+
+.mat-mdc-raised-button {
+    /* background-color: rgb(255, 153, 0); */
+    /* background-color: rgb(94, 122, 122); */
+    background-color: rgb(78, 106, 117);
+}

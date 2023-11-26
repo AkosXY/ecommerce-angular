@@ -7,6 +7,9 @@
           <div class="items-section" *ngIf="cartItems">
             <app-cart-item *ngFor="let product of cartItems" [product]="product"></app-cart-item>
           </div>
+          <div class="total-conatiner">
+              <p class="total-text">Subtotal: ${{getTotal()}}</p>
+          </div>
         <button mat-button matStepperNext>Next</button>
       </mat-step>
       <mat-step [stepControl]="shippingDataForm">
@@ -41,7 +44,7 @@
       <mat-step>
         <ng-template matStepLabel>Payment</ng-template>
         <div class="payment-section">
-          <p>Payment section</p>
+          <h1>Your total is: ${{getTotal()}}</h1>
         </div>
         <div>
           <button mat-button matStepperPrevious>Back</button>

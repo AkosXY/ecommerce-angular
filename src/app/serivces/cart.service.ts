@@ -32,6 +32,15 @@ export class CartService {
 
   }
 
+  getTotalPrice() {
+    let totalPrice = 0
+    for (const item of this.cartItems) {
+      const priceValue = parseFloat(item.price.replace('$', ''));
+      totalPrice += priceValue;
+    }
+    return totalPrice.toFixed(2)
+  }
+
   emptyCart() {
     this.cartItems = []
     this.emitCartUpdate()

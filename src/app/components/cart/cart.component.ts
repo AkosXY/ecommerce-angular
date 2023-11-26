@@ -48,6 +48,10 @@ export class CartComponent {
     })
   }
 
+  getTotal(){
+    return this.cartService.getTotalPrice()
+  }
+
   comfirmPurchase() {
     this.cartService.emptyCart()
   }

@@ -22,7 +22,6 @@ export class ProductGridComponent {
   constructor(private productService: ProductService) {
     this.getProductData()
     this.getProductRecomendation()
-
   }
 
   searchForm = new FormGroup({
@@ -44,14 +43,11 @@ export class ProductGridComponent {
   ];
 
   pageSizeChanged() {
-    console.log("changed")
     this.currentPage = 1
     this.getProductData()
   }
 
   pageLeft() {
-    console.log(this.currentPage)
-
     if (!this.leftDisabled()) {
       this.currentPage--
       this.getProductData()
@@ -63,7 +59,6 @@ export class ProductGridComponent {
   }
 
   pageRight() {
-    console.log(this.currentPage)
     if (!this.rightDisabled()) {
       this.currentPage++
       this.getProductData()
@@ -75,10 +70,8 @@ export class ProductGridComponent {
   }
 
   getProductData() {
-    console.log("getter")
     this.productData = false
     this.productService.getProducts(this.selectedPageSize, this.currentPage, this.searchTerm).subscribe((resp) => {
-      console.log(resp)
       this.productData = resp
       this.pageCount = resp.pageCount
     })

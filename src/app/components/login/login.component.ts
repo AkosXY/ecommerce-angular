@@ -38,7 +38,7 @@ export class LoginComponent {
   confirmPasswordForm = new FormControl('', [Validators.required, Validators.minLength(5), passwordMatchValidator(this.newPasswordForm)]);
 
   signupForm = new FormGroup({
-    newUsernameForm: new FormControl('', [ Validators.required]),
+    newUsernameForm: new FormControl('', [Validators.required]),
     newNameForm: new FormControl('', [Validators.required]),
     newEmailForm: new FormControl('', [Validators.email, Validators.required]),
     newPasswordForm: this.newPasswordForm,
@@ -49,7 +49,6 @@ export class LoginComponent {
   get usernameForm() {
     return this.loginForm.get('usernameForm');
   }
-
 
   get passwordForm() {
     return this.loginForm.get('passwordForm');
@@ -72,27 +71,25 @@ export class LoginComponent {
   }
 
   login() {
-    if (this.loginForm.valid) { 
-      let username:string = this.usernameForm?.value ? this.usernameForm?.value.toString() : "";
-      let password:string = this.passwordForm?.value ? this.passwordForm?.value.toString() : ""
+    if (this.loginForm.valid) {
+      let username: string = this.usernameForm?.value ? this.usernameForm?.value.toString() : "";
+      let password: string = this.passwordForm?.value ? this.passwordForm?.value.toString() : ""
       this.authService.login(username, password)
     }
   }
 
   signup() {
-    const newUser:NewUser = {
+    const newUser: NewUser = {
       username: this.newUsernameForm?.value || '',
-      name: this.newNameForm?.value  || '',
+      name: this.newNameForm?.value || '',
       email: this.newEmailForm?.value || '',
-      password: bcrypt.hashSync(this.newPasswordForm.value || ''),  
+      password: bcrypt.hashSync(this.newPasswordForm.value || ''),
       enabled: true
     }
 
 
-    if (this.signupForm.valid) { 
-    console.log(newUser)
-
-      this.authService.register(newUser).subscribe({ 
+    if (this.signupForm.valid) {
+      this.authService.register(newUser).subscribe({
       });
     }
   }

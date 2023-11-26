@@ -18,19 +18,13 @@ export class ProductCardComponent {
   @Input() shadow: boolean | undefined ;
   @Input() showButton: boolean | undefined = true;
 
-  constructor(private authService: AuthenticationService, private dialog: MatDialog, private cartService: CartService) {
-  }
-
-  ngOnInit() {
-
-  }
+  constructor(private authService: AuthenticationService, private dialog: MatDialog, private cartService: CartService) {}
 
   addToCart(product: any) {
     this.cartService.addToCart(product);
   }
 
   openDetailDialog(product: any) {
-    console.log('Open detail dialog');
     const dialogRef = this.dialog.open(ProductDetailDialogComponent, {
       data: product
     });
@@ -39,11 +33,7 @@ export class ProductCardComponent {
 
   handleButtonClick(event: Event, product: any) {
     event.stopPropagation();
-
-    console.log('Button clicked');
-
     this.addToCart(product)
-
   }
 
   isRow() {
@@ -51,9 +41,6 @@ export class ProductCardComponent {
   }
 
   parse(url: any) {
-    //console.log(url)
-    //const correctedUrl = url.replace(/'/g, '"');
-    //console.log(JSON.parse(url))
     return url !== "[]" ? JSON.parse(url) : environment.defaultLogo;
   }
 

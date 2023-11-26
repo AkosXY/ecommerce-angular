@@ -34,7 +34,6 @@ export class ProfileComponent {
   }
 
   getPurchesedData() {
-    console.log("getter")
     this.productData = false
     this.productService.getPreviosOrders().subscribe((resp) => {
       console.log(resp)

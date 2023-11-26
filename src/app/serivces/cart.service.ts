@@ -1,5 +1,4 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { SimpleProduct } from '../interface/product.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +8,13 @@ export class CartService {
   private cartItems: any[] = []
   cartUpdated = new EventEmitter<number>()
 
-  constructor() { }
+  constructor() {
+   this.loadCartFromLocalStorage();
+  }
 
   addToCart(item: any) {
     this.cartItems.push(item);
+    this.updateCartInLocalStorage()
     this.emitCartUpdate()
   }
 
@@ -36,8 +38,9 @@ export class CartService {
     const index = this.cartItems.indexOf(item);
     if (index !== -1) {
       this.cartItems.splice(index, 1);
+      this.updateCartInLocalStorage()
+      this.emitCartUpdate()
     }
-    this.emitCartUpdate()
 
   }
 
@@ -52,6 +55,7 @@ export class CartService {
 
   emptyCart() {
     this.cartItems = []
+    this.updateCartInLocalStorage()
     this.emitCartUpdate()
   }
 
@@ -59,4 +63,15 @@ export class CartService {
     this.cartUpdated.emit(this.getItemNumber());
   }
 
+  updateCartInLocalStorage() {
+    localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+  }
+  
+  loadCartFromLocalStorage() {
+    const cartItemsFromStorage = localStorage.getItem('cartItems');
+    if (cartItemsFromStorage) {
+      this.cartItems = JSON.parse(cartItemsFromStorage);
+    }
+  }
+  
 }

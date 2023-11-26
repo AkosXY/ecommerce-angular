@@ -12,13 +12,16 @@ export class ToolbarComponent {
   hideBadge = true
   cartItems = 0
 
-  constructor(private authService: AuthenticationService, private cartService: CartService) {}
+  constructor(private authService: AuthenticationService, private cartService: CartService) { }
 
   ngOnInit() {
     this.cartService.cartUpdated.subscribe((count: number) => {
       this.cartItems = count;
       this.cartItems > 0 ? this.hideBadge = false : this.hideBadge = true
     });
+
+    this.cartItems = this.cartService.getItemNumber();
+    this.cartItems > 0 ? this.hideBadge = false : this.hideBadge = true;
   }
 
   getAuthenticated(): boolean {

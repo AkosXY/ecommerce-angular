@@ -1,5 +1,5 @@
 <div class="feautred-container">
-      <h2 class="featured-text">Featured items you may like</h2>
+      <h2 class="featured-text" *ngIf="productRecomendation">Featured items you may like</h2>
       <div class="featured-items" *ngIf="productRecomendation">
             <app-product-card *ngFor="let product of productRecomendation.products" [product]="product"
                   [display]="'row'" [shadow]="true"></app-product-card>

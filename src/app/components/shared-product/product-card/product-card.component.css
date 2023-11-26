@@ -63,6 +63,13 @@ mat-card-content p:first-child {
     line-height: 1.2em;
 }
 
+mat-card {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 .crazy-hover-effect:hover {
     transition: 0.2s;
     transform: translate(0, -10px);

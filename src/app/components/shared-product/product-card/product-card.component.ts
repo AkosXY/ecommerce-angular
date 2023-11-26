@@ -4,6 +4,7 @@ import { Product } from 'src/app/interface/product.interface';
 import { ProductDetailDialogComponent } from '../product-detail-dialog/product-detail-dialog.component';
 import { CartService } from 'src/app/serivces/cart.service';
 import { environment } from 'src/environments/environment.development';
+import { AuthenticationService } from 'src/app/serivces/authentication.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class ProductCardComponent {
   @Input() shadow: boolean | undefined ;
   @Input() showButton: boolean | undefined = true;
 
-  constructor(private dialog: MatDialog, private cartService: CartService) {
+  constructor(private authService: AuthenticationService, private dialog: MatDialog, private cartService: CartService) {
   }
 
   ngOnInit() {
@@ -54,6 +55,10 @@ export class ProductCardComponent {
     //const correctedUrl = url.replace(/'/g, '"');
     //console.log(JSON.parse(url))
     return url !== "[]" ? JSON.parse(url) : environment.defaultLogo;
+  }
+
+  getAuthenticated(): boolean {
+    return this.authService.getAuthenticated();
   }
 
 }

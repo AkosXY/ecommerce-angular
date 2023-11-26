@@ -9,7 +9,7 @@
                         <p>{{data.brand}}</p><!-- TODO here -->
                         <p>in {{ data.main_cat }}</p>
                         <h2 class="price-text">{{ data.price }}</h2>
-                        <button mat-raised-button (click)="addItemToCart()" color="primary">
+                        <button mat-raised-button (click)="addItemToCart()" color="primary" *ngIf="getAuthenticated();">
                             <mat-icon>shopping_cart</mat-icon>
                             Add to cart - {{ data.price }}
                         </button>

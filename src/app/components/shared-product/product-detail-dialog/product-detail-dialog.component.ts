@@ -3,6 +3,7 @@ import { Product } from 'src/app/interface/product.interface';
 import { ProductGridComponent } from '../../product-grid/product-grid.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CartService } from 'src/app/serivces/cart.service';
+import { AuthenticationService } from 'src/app/serivces/authentication.service';
 
 @Component({
   selector: 'app-product-detail-dialog',
@@ -10,7 +11,7 @@ import { CartService } from 'src/app/serivces/cart.service';
   styleUrls: ['./product-detail-dialog.component.css']
 })
 export class ProductDetailDialogComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Product, private dialogRef: MatDialogRef<ProductGridComponent>, private cartService: CartService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Product, private dialogRef: MatDialogRef<ProductGridComponent>, private cartService: CartService, private authService: AuthenticationService) { }
 
 
   getObjectKeys(obj: any): string[] {
@@ -34,5 +35,10 @@ export class ProductDetailDialogComponent {
     console.log(JSON.parse(text))
     return JSON.parse(text)
   }
+
+  getAuthenticated(): boolean {
+    return this.authService.getAuthenticated();
+  }
+
 
 }

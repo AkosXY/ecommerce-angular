@@ -63,6 +63,11 @@ mat-card-content p:first-child {
     line-height: 1.2em;
 }
 
+.price-text {
+    font-size: 18px;
+    font-weight: 500;
+}
+
 mat-card {
     padding-left: 15px;
     padding-right: 15px;

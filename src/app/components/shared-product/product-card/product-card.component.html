@@ -4,7 +4,7 @@
         <mat-card-content matRipple class="w-100">
             <p>{{product?.title}}</p>
             <!-- <p>{{product?.brand}}</p> -->
-            <p>{{product?.price}}</p>
+            <p class="price-text">{{product?.price}}</p>
             <button *ngIf="showButton && getAuthenticated();" mat-raised-button color="primary" (click)="handleButtonClick($event, product)">
                 <mat-icon>shopping_cart</mat-icon>
                 Add to cart

@@ -70,5 +70,12 @@ export class ProductService {
       headers: this.auth.getAuthHeader()
     });
   }
+  
+  getRecomendation(): Observable<any> {
+    const url = `${this.apiUrl}/products/user-recommendations`;
+    return this.httpClient.get<any>(url, {
+      headers: this.auth.getAuthHeader()
+    });
+  }
 
 }

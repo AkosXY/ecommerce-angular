@@ -78,7 +78,8 @@ export class ProductGridComponent {
   }
 
   getProductRecomendation() {
-    this.productService.getProducts(4, 10).subscribe((resp) => {
+    this.productService.getRecomendation().subscribe((resp) => {
+      console.log(resp)
       this.productRecomendation = resp
     })
   }

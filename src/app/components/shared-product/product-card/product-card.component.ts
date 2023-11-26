@@ -18,7 +18,8 @@ export class ProductCardComponent {
   @Input() shadow: boolean | undefined ;
   @Input() showButton: boolean | undefined = true;
 
-  constructor(private authService: AuthenticationService, private dialog: MatDialog, private cartService: CartService) {}
+  constructor(private authService: AuthenticationService, private dialog: MatDialog, private cartService: CartService) {
+  }
 
   addToCart(product: any) {
     this.cartService.addToCart(product);

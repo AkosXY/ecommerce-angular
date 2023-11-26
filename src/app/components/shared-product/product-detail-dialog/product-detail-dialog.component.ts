@@ -32,7 +32,6 @@ export class ProductDetailDialogComponent {
   }
 
   parseList(text: any) { //TODO
-    console.log(JSON.parse(text))
     return JSON.parse(text)
   }
 

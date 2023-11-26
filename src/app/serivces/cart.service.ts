@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { SimpleProduct } from '../interface/product.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,14 @@ export class CartService {
 
   getCartItems() {
     return this.cartItems;
+  }
+
+  getCartItemsForRecomendation() {
+    const simpleCartItems = this.cartItems.map(item => ({
+      asin: item.asin,
+      title: item.title
+    }));
+    return simpleCartItems
   }
 
   getItemNumber() {

@@ -1,7 +1,7 @@
 <div class="feautred-container">
-      <h2 class="featured-text" *ngIf="productRecomendation">Featured items you may like</h2>
-      <div class="featured-items" *ngIf="productRecomendation">
-            <app-product-card *ngFor="let product of productRecomendation.products" [product]="product"
+      <h2 class="featured-text"*ngIf="productRecomendation && productRecomendation.length > 1">Featured items you may like</h2>
+      <div class="featured-items" *ngIf="productRecomendation && productRecomendation.length > 1">
+            <app-product-card *ngFor="let product of productRecomendation" [product]="product"
                   [display]="'row'" [shadow]="true"></app-product-card>
       </div>
 </div>

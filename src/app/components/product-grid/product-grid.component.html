@@ -37,7 +37,7 @@
 
 <div class="list-container" *ngIf="productData; else spinnerBlock">
       <app-product-card *ngFor="let product of productData.products" [product]="product"
-            [display]="'column'"></app-product-card>
+            [display]="'column'" [showButton]="true"></app-product-card>
 </div>
 
 <ng-template #spinnerBlock>

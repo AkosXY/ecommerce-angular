@@ -14,8 +14,8 @@ import { environment } from 'src/environments/environment.development';
 export class ProductCardComponent {
   @Input() product: Product | undefined;
   @Input() display: string | undefined;
-  @Input() shadow: boolean | undefined;
-
+  @Input() shadow: boolean | undefined ;
+  @Input() showButton: boolean | undefined = true;
 
   constructor(private dialog: MatDialog, private cartService: CartService) {
   }

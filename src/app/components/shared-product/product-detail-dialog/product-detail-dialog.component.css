@@ -66,3 +66,7 @@ img {
     height: 250px;
     padding-right: 35px;
 }
+
+.mat-mdc-raised-button {
+    background-color: rgb(78, 106, 117);
+}

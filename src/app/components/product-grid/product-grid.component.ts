@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Product } from 'src/app/interface/product.interface';
-import { CartService } from 'src/app/serivces/cart.service';
 import { ProductService } from 'src/app/serivces/product.service';
 
 @Component({
@@ -15,7 +14,7 @@ export class ProductGridComponent {
   productRecomendation: any
   productList: any
 
-  selectedPageSize: number = 14;
+  selectedPageSize: number = 10;
   currentPage: number = 1;
   pageCount: number = 1;
   searchTerm: string = "";
@@ -39,9 +38,9 @@ export class ProductGridComponent {
 
 
   pages: any[] = [
-    { value: 14 },
-    { value: 21 },
-    { value: 28 },
+    { value: 10 },
+    { value: 15 },
+    { value: 20 },
   ];
 
   pageSizeChanged() {

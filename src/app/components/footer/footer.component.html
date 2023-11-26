@@ -8,9 +8,9 @@
         </div>
         <div class="column">
             <div class="title">
-                <p><a routerLink="cart">Cart</a></p>
-                <p>&nbsp;&#x2022;&nbsp;<a routerLink="profile">Profile</a></p>
-                <p>&nbsp;&#x2022;&nbsp;<a routerLink="login" (click)="logout()">Logout</a></p>
+                <p *ngIf="getAuthenticated()"><a routerLink="cart">Cart</a>&nbsp;&#x2022;</p>
+                <p *ngIf="getAuthenticated()">&nbsp;<a routerLink="profile">Profile</a>&nbsp;&#x2022;</p>
+                <p>&nbsp;<a routerLink="login" (click)="logout()">Logout</a></p>
             </div>
         </div>
 

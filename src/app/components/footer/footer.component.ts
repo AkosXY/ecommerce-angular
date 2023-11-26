@@ -15,6 +15,11 @@ export class FooterComponent {
     logout() {
       this.authService.logout()
     }
+
+    getAuthenticated(): boolean {
+      return this.authService.getAuthenticated();
+    }
+  
 }
 
 

@@ -1,0 +1,11 @@
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  .wrapper {
+    min-height: 81.8%;
+  
+    /* Equal to height of footer */
+    /* But also accounting for potential margin-bottom of last child */
+    margin-bottom: auto;
+  }

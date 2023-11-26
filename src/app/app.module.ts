@@ -12,6 +12,7 @@ import {CookieService} from 'ngx-cookie-service';
 
 import { HomeComponent } from './components/home/home.component';
 import { SharedMaterialModule } from './shared/shared.material.module';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { SharedMaterialModule } from './shared/shared.material.module';
   
     ToolbarComponent,
     HomeComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

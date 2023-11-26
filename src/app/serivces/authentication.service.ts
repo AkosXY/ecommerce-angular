@@ -39,7 +39,7 @@ export class AuthenticationService {
   } 
 
   register(user: NewUser) {
-    return this.http.post(`${this.apiUrl}/register`, { user })
+    return this.http.post(`${this.apiUrl}/register`, user )
   }
 
 

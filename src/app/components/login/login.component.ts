@@ -84,14 +84,15 @@ export class LoginComponent {
       username: this.newUsernameForm?.value || '',
       name: this.newNameForm?.value  || '',
       email: this.newEmailForm?.value || '',
-      password: bcrypt.hashSync(this.newPasswordForm.value || '')  
+      password: bcrypt.hashSync(this.newPasswordForm.value || ''),  
+      enabled: true
     }
 
-    console.log(newUser.password)
 
     if (this.signupForm.valid) { 
-      this.authService.register(newUser).subscribe({
-      
+    console.log(newUser)
+
+      this.authService.register(newUser).subscribe({ 
       });
     }
   }

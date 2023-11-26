@@ -33,12 +33,11 @@ mat-card img {
 
 }
 
-
 .custom-shadow{
     box-shadow:0 10px 10px 10px rgba(0,0,0,0.3)
 }
 
-mat-card-content p {
+/* mat-card-content p {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -46,6 +45,20 @@ mat-card-content p {
     line-height: 1.2em;
 }
 
+mat-card-content p {
+    display: block; 
+    height: 3.6em; 
+    line-height: 1.2em; 
+} */
+
+mat-card-content p:first-child {
+    padding-top: 15px;
+    margin-bottom: 4px;
+    display: block; 
+    overflow: hidden;
+    height: 3.6em; 
+    line-height: 1.2em;
+}
 
 .crazy-hover-effect:hover {
     transition: 0.2s;
@@ -54,7 +67,5 @@ mat-card-content p {
 }
 
 .mat-mdc-raised-button {
-    /* background-color: rgb(255, 153, 0); */
-    /* background-color: rgb(94, 122, 122); */
     background-color: rgb(78, 106, 117);
 }

@@ -1,5 +1,4 @@
 export interface User {
-  admin: boolean,
   email: string,
   enabled: boolean,
   id: number,
@@ -12,7 +11,6 @@ export interface User {
 
 
 export const NULL_USER: User = {
-  admin: false,
   email: "",
   enabled: false,
   id: 0,

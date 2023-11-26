@@ -34,7 +34,7 @@ export class CartComponent {
   }
 
   getProductRecomendation() {
-    this.productService.getProducts(4, 10).subscribe((resp) => {
+    this.productService.getProducts(4, 12).subscribe((resp) => {
       console.log(resp)
       this.productRecomendation = resp
     })

@@ -1,7 +1,7 @@
 <h1>My Shopping Cart:</h1>
 <div class="cart-container">
   <div class="stepper-container">
-    <mat-stepper labelPosition="bottom" #stepper>
+    <mat-stepper labelPosition="bottom" [linear]="false" #stepper>
       <mat-step>
           <ng-template matStepLabel>View cart items</ng-template>
           <div class="items-section" *ngIf="cartItems">
@@ -13,7 +13,7 @@
         <button mat-button matStepperNext>Next</button>
       </mat-step>
       <mat-step [stepControl]="shippingDataForm">
-        <form [formGroup]="shippingDataForm" class="form-container">
+        <form [formGroup]="shippingDataForm"  class="form-container">
           <ng-template matStepLabel>Fill out shipping information</ng-template>
           <mat-form-field>
             <mat-label>Name</mat-label>

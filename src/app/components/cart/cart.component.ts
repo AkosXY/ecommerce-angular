@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Product } from 'src/app/interface/product.interface';
+import { AuthenticationService } from 'src/app/serivces/authentication.service';
 import { CartService } from 'src/app/serivces/cart.service';
 import { ProductService } from 'src/app/serivces/product.service';
 
@@ -26,7 +27,7 @@ export class CartComponent {
     emailForm: new FormControl('')
   })
 
-  constructor(private productService: ProductService, private cartService: CartService) {
+  constructor(private productService: ProductService, private cartService: CartService, private authService: AuthenticationService) {
     this.getProducts()
     this.getProductRecomendation()
     this.cartItems = this.cartService.getCartItems();
@@ -40,6 +41,9 @@ export class CartComponent {
     })
   }
 
+  getAuthenticated() {
+    return this.authService.getAuthenticated()
+  }
 
   getProducts(){
     this.productService.getProducts().subscribe((resp) => {
@@ -54,6 +58,9 @@ export class CartComponent {
 
   comfirmPurchase() {
     this.cartService.emptyCart()
+    this.cartItems.forEach((product) => {
+      this.productService.placeOrder(product).subscribe()
+    })
   }
 
 

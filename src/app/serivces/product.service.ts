@@ -80,6 +80,9 @@ export class ProductService {
   }
 
   getCartRecomendation(cartItems: SimpleProduct[]): Observable<any> {
+    console.log("CART_________________")
+    console.log(cartItems)
+    console.log("CART_________________")
     const url = `${this.apiUrl}/products/cart-recommendations`;
     return this.httpClient.post<any>(url,cartItems, {
       headers: this.auth.getAuthHeader()

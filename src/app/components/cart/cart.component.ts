@@ -5,6 +5,8 @@ import { Product } from 'src/app/interface/product.interface';
 import { AuthenticationService } from 'src/app/serivces/authentication.service';
 import { CartService } from 'src/app/serivces/cart.service';
 import { ProductService } from 'src/app/serivces/product.service';
+import { MessageDialogComponent } from '../message-dialog/message-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-cart',
@@ -28,7 +30,7 @@ export class CartComponent {
     emailForm: new FormControl('')
   })
 
-  constructor(private productService: ProductService, private cartService: CartService, private authService: AuthenticationService) {
+  constructor(private productService: ProductService, private cartService: CartService, private authService: AuthenticationService, private dialog: MatDialog) {
     this.getProducts()
     this.getProductRecomendation()
     this.cartItems = this.cartService.getCartItems();
@@ -69,6 +71,13 @@ export class CartComponent {
     this.cartItems.forEach((product) => {
       this.productService.placeOrder(product).subscribe()
     })
+    this.dialog.open(MessageDialogComponent, {
+      data: {
+        text: "We're thrilled to share the exciting news with you - your purchase was successful! 🚀",
+        buttonLabel: "Got It!"
+      }
+    });
+
   }
 
 

@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
-import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
+import { Product } from 'src/app/interface/product.interface';
+import { AuthenticationService } from 'src/app/serivces/authentication.service';
+import { CartService } from 'src/app/serivces/cart.service';
+import { ProductService } from 'src/app/serivces/product.service';
+import { MessageDialogComponent } from '../message-dialog/message-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-cart',
@@ -7,6 +14,13 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent {
+
+  productData: any
+  productRecomendation: any
+  productList: any
+
+  cartItems: any[] = [];
+
 
   shippingDataForm = new FormGroup({
     addressForm: new FormControl(''),
@@ -16,8 +30,56 @@ export class CartComponent {
     emailForm: new FormControl('')
   })
 
+  constructor(private productService: ProductService, private cartService: CartService, private authService: AuthenticationService, private dialog: MatDialog) {
+    this.getProducts()
+    this.getProductRecomendation()
+    this.cartItems = this.cartService.getCartItems();
 
-  constructor() {}
+  }
+
+
+  ngOnInit() {
+    this.cartService.cartUpdated.subscribe(() => {
+      console.log(this.cartService.getCartItemsForRecomendation())
+    });
+  }
+
+
+  getProductRecomendation() {
+    this.productService.getCartRecomendation(this.cartService.getCartItemsForRecomendation()).subscribe((resp) => {
+      this.productRecomendation = resp.filter((item: any) => item !== null).slice(0, 4);
+      console.log(this.productRecomendation)
+    })
+  }
+
+  getAuthenticated() {
+    return this.authService.getAuthenticated()
+  }
+
+  getProducts() {
+    this.productService.getProducts().subscribe((resp) => {
+      this.productData = resp
+    })
+  }
+
+  getTotal() {
+    return this.cartService.getTotalPrice()
+  }
+
+  comfirmPurchase() {
+    this.cartService.emptyCart()
+    this.cartItems.forEach((product) => {
+      this.productService.placeOrder(product).subscribe()
+    })
+    this.dialog.open(MessageDialogComponent, {
+      data: {
+        text: "We're thrilled to share the exciting news with you - your purchase was successful! 🚀",
+        buttonLabel: "Got It!"
+      }
+    });
+
+  }
+
 
   get addressForm() {
     return this.shippingDataForm.get('addressForm');
@@ -30,7 +92,7 @@ export class CartComponent {
   get nameForm() {
     return this.shippingDataForm.get('nameForm');
   }
-  
+
   get phoneForm() {
     return this.shippingDataForm.get('phoneForm');
   }
@@ -38,8 +100,6 @@ export class CartComponent {
   get emailForm() {
     return this.shippingDataForm.get('emailForm');
   }
-
-
 
 
 }

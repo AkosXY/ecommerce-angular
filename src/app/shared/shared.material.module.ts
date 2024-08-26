@@ -14,6 +14,9 @@ import { CommonModule } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatRippleModule } from '@angular/material/core';
 import { MatStepperModule } from '@angular/material/stepper';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatSelectModule} from '@angular/material/select';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -36,6 +39,9 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatSidenavModule,
     MatGridListModule,
     MatRippleModule,
+    MatBadgeModule,
+    MatSelectModule,
+    MatProgressSpinnerModule,
     MatStepperModule
 
 
@@ -55,6 +61,9 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatSidenavModule,
     MatGridListModule,
     MatRippleModule,
+    MatBadgeModule,
+    MatSelectModule,
+    MatProgressSpinnerModule,
     MatStepperModule
   ]
 

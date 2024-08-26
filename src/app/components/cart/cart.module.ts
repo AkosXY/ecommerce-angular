@@ -5,6 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { CartComponent } from './cart.component';
 import { SharedMaterialModule } from 'src/app/shared/shared.material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedProductModule } from "../shared-product/shared-product.module";
+import { CartItemComponent } from './cart-item/cart-item.component';
 
 
 
@@ -17,19 +19,18 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [
-    CartComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedMaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
-
-    RouterModule.forChild(routes),
-
-  ],
-  exports: [RouterModule]
-
+    declarations: [
+        CartComponent,
+        CartItemComponent
+    ],
+    exports: [RouterModule],
+    imports: [
+        CommonModule,
+        SharedMaterialModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule.forChild(routes),
+        SharedProductModule
+    ]
 })
 export class CartModule { }

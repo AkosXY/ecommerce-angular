@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from 'src/app/serivces/authentication.service';
+import { CartService } from 'src/app/serivces/cart.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -8,16 +9,28 @@ import { AuthenticationService } from 'src/app/serivces/authentication.service';
 })
 export class ToolbarComponent {
 
-  constructor(private authService :AuthenticationService) { }
+  hideBadge = true
+  cartItems = 0
 
+  constructor(private authService: AuthenticationService, private cartService: CartService) { }
 
-  getAuthenticated(): boolean{
+  ngOnInit() {
+    this.cartService.cartUpdated.subscribe((count: number) => {
+      this.cartItems = count;
+      this.cartItems > 0 ? this.hideBadge = false : this.hideBadge = true
+    });
+
+    this.cartItems = this.cartService.getItemNumber();
+    this.cartItems > 0 ? this.hideBadge = false : this.hideBadge = true;
+  }
+
+  getAuthenticated(): boolean {
     return this.authService.getAuthenticated();
   }
 
-  logout(){
+  logout() {
     this.authService.logout()
   }
-  
+
 
 }

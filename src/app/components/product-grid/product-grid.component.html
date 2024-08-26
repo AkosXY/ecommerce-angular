@@ -1,16 +1,50 @@
+<div class="feautred-container">
+      <h2 class="featured-text"*ngIf="productRecomendation && productRecomendation.length > 1">Featured items you may like</h2>
+      <div class="featured-items" *ngIf="productRecomendation && productRecomendation.length > 1">
+            <app-product-card *ngFor="let product of productRecomendation" [product]="product"
+                  [display]="'row'" [shadow]="true"></app-product-card>
+      </div>
+</div>
 <div class="search-container">
-  <mat-form-field style="margin: auto; width: 30%;" >
-      <mat-label>Search...</mat-label>
-      <mat-icon matPrefix>search</mat-icon>
-      <input matInput placeholder="search" >
-  </mat-form-field>
+
+      <form class="searchbar-container" [formGroup]="searchForm">
+            <mat-form-field class="w-50">
+                  <mat-label>Search...</mat-label>
+                  <mat-icon matPrefix>search</mat-icon>
+                  <input matInput placeholder="search" formControlName="seachInputForm">
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="search()">
+                  Search
+            </button>
+      </form>
+      <div class="button-container">
+            <button mat-mini-fab color="primary" (click)="pageLeft()" [disabled]="leftDisabled()">
+                  <mat-icon>keyboard_arrow_left</mat-icon>
+            </button>
+            <p>{{currentPage*selectedPageSize-selectedPageSize+1}}-{{currentPage*selectedPageSize}}</p>
+            <button mat-mini-fab color="primary" (click)="pageRight()" [disabled]="rightDisabled()">
+                  <mat-icon>keyboard_arrow_right</mat-icon>
+            </button>
+            <mat-form-field class="page-selector" appearance="fill">
+                  <mat-select [(ngModel)]="selectedPageSize" (ngModelChange)="pageSizeChanged()" name="food">
+                        <mat-option *ngFor="let page of pages" [value]="page.value">
+                              {{page.value}}
+                        </mat-option>
+                  </mat-select>
+            </mat-form-field>
+      </div>
 </div>
 
-<div class="list-container">
-    <mat-grid-list cols="5" rowHeight="1.8:1" gutterSize="20px" >
-        <mat-grid-tile *ngFor="let product of CONST_DATA">
-          <app-product-card [product]="product"></app-product-card>
-        </mat-grid-tile>
-    </mat-grid-list>
+<div class="list-container" *ngIf="productData; else spinnerBlock">
+      <app-product-card *ngFor="let product of productData.products" [product]="product" [display]="'column'"
+            [showButton]="true"></app-product-card>
 </div>
-  
+
+<ng-template #spinnerBlock>
+      <div class="spinner-container">
+            <mat-spinner diameter="120"></mat-spinner>
+      </div>
+</ng-template>
+
+<br>
+<br>

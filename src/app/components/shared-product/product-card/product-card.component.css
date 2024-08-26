@@ -1,0 +1,86 @@
+.card-container {
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+
+}
+.w-100{
+    width: 100%;
+}
+
+.custom-card:hover {
+    cursor: pointer;
+    background-color: rgb(245, 245, 245)
+}
+
+mat-card img {
+    height: 140px;
+    width: 140px;
+    padding: 10px;
+}
+
+
+.custom-row-card{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.custom-column-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.custom-shadow{
+    box-shadow:0 10px 10px 10px rgba(0,0,0,0.3)
+}
+
+/* mat-card-content p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    line-height: 1.2em;
+}
+
+mat-card-content p {
+    display: block; 
+    height: 3.6em; 
+    line-height: 1.2em; 
+} */
+
+mat-card-content p:first-child {
+    padding-top: 15px;
+    margin-bottom: 4px;
+    display: block; 
+    overflow: hidden;
+    height: 3.6em; 
+    line-height: 1.2em;
+}
+
+.price-text {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+mat-card {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.crazy-hover-effect:hover {
+    transition: 0.2s;
+    transform: translate(0, -10px);
+    font-weight: 450;
+}
+
+.mat-mdc-raised-button {
+    background-color: rgb(78, 106, 117);
+}

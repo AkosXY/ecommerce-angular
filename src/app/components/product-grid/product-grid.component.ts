@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Product } from 'src/app/interface/product.interface';
+import { ProductService } from 'src/app/serivces/product.service';
 
 @Component({
   selector: 'app-product-grid',
@@ -8,54 +10,82 @@ import { Product } from 'src/app/interface/product.interface';
 })
 export class ProductGridComponent {
 
-  constructor() {
-    console.log(this.CONST_DATA);
+  productData: any
+  productRecomendation: any
+  productList: any
+
+  selectedPageSize: number = 10;
+  currentPage: number = 1;
+  pageCount: number = 1;
+  searchTerm: string = "";
+
+  constructor(private productService: ProductService) {
+    this.getProductData()
+    this.getProductRecomendation()
+  }
+
+  searchForm = new FormGroup({
+    seachInputForm: new FormControl(''),
+  })
+
+
+  search() {
+    this.searchTerm = this.seachInputForm?.value || ''
+    this.currentPage = 1
+    this.getProductData()
   }
 
 
-  PRODUCT:Product = {
-    "category": [
-      "Electronics",
-      "Camera & Photo",
-      "Video Surveillance",
-      "Surveillance Systems",
-      "Surveillance DVR Kits"
-    ],
-    "description": [
-      "The following camera brands and models have been tested for compatibility with GV-Software.",
-      "GeoVision \tACTi \tArecont Vision \tAXIS \tBosch \tCanon",
-      "CNB \tD-Link \tEtroVision \tHikVision \tHUNT \tIQEye",
-      "JVC \tLG \tMOBOTIX \tPanasonic \tPelco \tSamsung",
-      "Sanyo \tSony \tUDP \tVerint \tVIVOTEK \t \n \nCompatible Standard and Protocol",
-      "GV-System also allows for integration with all other IP video devices compatible with ONVIF(V2.0), PSIA (V1.1) standards, or RTSP protocol.",
-      "ONVIF \tPSIA \tRTSP \t  \t  \t \nNote: Specifications are subject to change without notice. Every effort has been made to ensure that the information on this Web site is accurate. No liability is assumed for incidental or consequential damages arising from the use of the information or products contained herein."
-    ],
-    "title": "Genuine Geovision 1 Channel 3rd Party NVR IP Software with USB Dongle Onvif PSIA",
-    "also_buy": [],
-    "brand": "GeoVision",
-    "feature": [
-      "Genuine Geovision 1 Channel NVR IP Software",
-      "Support 3rd Party IP Camera",
-      "USB Dongle"
-    ],
-    "also_view": [],
-    "main_cat": "Camera & Photo",
-    "date": "January 28, 2014",
-    "price": "$65.00",
-    "asin": "0011300000",
-    "imageURL": [
-      "https://images-na.ssl-images-amazon.com/images/I/411uoWa89KL._SS40_.jpg"
-    ],
-    "imageURLHighRes": [
-      "https://images-na.ssl-images-amazon.com/images/I/411uoWa89KL.jpg"
-    ]
+  pages: any[] = [
+    { value: 10 },
+    { value: 15 },
+    { value: 20 },
+  ];
+
+  pageSizeChanged() {
+    this.currentPage = 1
+    this.getProductData()
   }
 
+  pageLeft() {
+    if (!this.leftDisabled()) {
+      this.currentPage--
+      this.getProductData()
+    }
+  }
 
-  
-  CONST_DATA:Product[] = [
-    this.PRODUCT, this.PRODUCT, this.PRODUCT, this.PRODUCT, this.PRODUCT, this.PRODUCT
+  leftDisabled() {
+    return this.currentPage === 1
+  }
 
-  ]
+  pageRight() {
+    if (!this.rightDisabled()) {
+      this.currentPage++
+      this.getProductData()
+    }
+  }
+
+  rightDisabled() {
+    return this.currentPage === this.pageCount
+  }
+
+  getProductData() {
+    this.productData = false
+    this.productService.getProducts(this.selectedPageSize, this.currentPage, this.searchTerm).subscribe((resp) => {
+      this.productData = resp
+      this.pageCount = resp.pageCount
+    })
+  }
+
+  getProductRecomendation() {
+    this.productService.getRecomendation().subscribe((resp) => {
+      this.productRecomendation = resp.filter((item: any) => item !== null).slice(0, 4);
+    })
+  }
+
+  get seachInputForm() {
+    return this.searchForm.get('seachInputForm');
+  }
+
 
 }

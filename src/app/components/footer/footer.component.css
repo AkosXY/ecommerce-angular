@@ -1,0 +1,86 @@
+.footer {
+    margin: auto;
+    text-align: center;
+    background-color: #557179;
+    padding: 5px;
+    color: white;
+}
+.content{
+    display: flex;
+    margin-bottom: 0px;
+}
+
+.column {
+    flex: 3;
+    margin: auto;
+    text-align: center;
+}
+
+.column h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.column ul li {
+    margin-bottom: 5px;
+}
+
+.column ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.column ul li a:hover {
+    color: #ff0000; /* Válassz egy színt a hover állapothoz */
+}
+
+.text{
+    width: 100%;
+    text-align: center;
+}
+
+.title{
+    padding: 20px;
+    display: inline-block;
+    
+}
+h3{
+    font-weight: 400;
+}
+p{
+    display: inline-block;
+    
+}
+
+a:link { text-decoration: none; color: white; }
+
+
+a:visited { text-decoration: none; color: white; }
+
+
+a:hover { text-decoration: none; color: white; }
+
+
+a:active { text-decoration: none; color: white; }
+
+.copyright{
+    font-size: 12px;
+    font-style: italic;
+}
+.contact{
+    margin-bottom: 30px;
+}
+
+.main{
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+mat-icon{
+    transform: scale(1.3);
+}

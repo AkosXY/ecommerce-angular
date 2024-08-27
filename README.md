@@ -1,9 +1,6 @@
 # ecommerceAngular
 
-<a href="./src/assets/documentation/rendszerterv_ecommerceMI.pdf" target="_blank">
-
-### Open documentation
-</a>
+### [Open documentation](./src/assets/documentation/rendszerterv_ecommerceMI.pdf)
 
 
 ### Product list

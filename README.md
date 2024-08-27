@@ -1,6 +1,34 @@
 # ecommerceAngular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
+<a href="./src/assets/documentation/rendszerterv_ecommerceMI.pdf" target="_blank">
+
+### Open documentation
+</a>
+
+
+### Product list
+<a href="./src/assets/documentation/product_list.png" target="_blank">
+  <img src="./src/assets/documentation/product_list.png" width="450">
+</a>
+
+### Cart
+<a href="./src/assets/documentation/cart.png" target="_blank">
+  <img src="./src/assets/documentation/cart.png" width="450">
+</a>
+
+
+### Profile
+<a href="./src/assets/documentation/profile.png" target="_blank">
+  <img src="./src/assets/documentation/profile.png" width="450">
+</a>
+
+
+### Authentication
+<a href="./src/assets/documentation/login.png" target="_blank">
+  <img src="./src/assets/documentation/login.png" width="450">
+</a>
+
+
 
 ## Development server
 
